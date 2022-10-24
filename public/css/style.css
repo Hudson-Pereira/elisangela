@@ -1,0 +1,20 @@
+body#produtos{
+    background-color: black;
+}
+
+h1#produtos{
+    color: pink
+}
+
+button#enviar{
+    margin-top: 10px
+}
+
+p#prod{
+    color: white
+}
+
+section#prods{
+    color: white
+
+}
