@@ -1,9 +1,9 @@
-body#produtos{
-    background-color: black;
+body{
+    background: black url("./Lisa.jpeg") no-repeat right top;
 }
 
-h1#produtos{
-    color: pink
+h1{
+    color: rgb(226, 83, 107)
 }
 
 button#enviar{
@@ -14,7 +14,56 @@ p#prod{
     color: white
 }
 
-section#prods{
-    color: white
-
+h2{
+    color: rgb(226, 83, 107) 
 }
+
+section#dados{
+    display: flex;
+    flex-direction: column;
+    width:300px;
+    height: 500px;
+    font-size: 30px;
+    color: rgb(226, 83, 107);
+    background-color: rgb(248, 172, 185);
+    margin-bottom: 20px;
+    border-radius: 35px;
+    padding: 15px;
+}#data{
+    display: flex;
+    flex-direction: row;
+    color: rgb(226, 83, 107);
+    width: 300px;
+    height: 50px;
+}
+
+span{
+    margin: 8px;
+    font-size: 20px;
+    color: black;
+}
+
+label{
+    color: rgb(226, 83, 107);
+}
+
+article{
+    margin: 10px 10px 30px 10px 
+}
+
+p{
+    margin-left: 10px;
+}
+
+input#dia{
+    width: 50px
+}#mes{
+    width: 50px
+}#ano{
+    width: 50px
+}#estoque{
+    width: 90px
+}#descricao{
+    height: 150px;
+}
+

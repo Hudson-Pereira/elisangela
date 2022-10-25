@@ -8,26 +8,31 @@
 
     <title>Espaço Lisa Ribeiro</title>
 </head>
-<body id="produtos">
+<body>
     <header> 
         <nav>
         <a href="/"><input type="button" value="Início"></a>
+        <a href="produto/add"><input type="button" value="Novo Produto"></a>
+
         </nav>
-        <h1 id="produtos">Espaço Lisa Ribeiro</h1>
+        <h1>Espaço Lisa Ribeiro</h1>
     </header>
     <main>
-        <section id="prods">
-            <%= produtos[0].nome %>
-        </section>
-            <section>
-               <form id="dados" action="produtos/add" method="POST">
-                <article>
-                    <p id="prod">Produto:<input type="text" name="nome" placeholder="Insira o nome do produto"></p>
-                </article>
 
-                <button type="submit">Salvar</button>
-               </form>
-            </section> 
+            <% produtos.forEach(item => { %> 
+                <ul id="detalhes">
+                    <section id="dados">Nome:<span><%= item.nome %></span> 
+                        Descrição:<span><%= item.descricao %></span>
+                        Valor:<span><%= item.valor %></span>
+                        Vendedor:<span><%= item.vendedor%></span>
+                        Data de validade:<span><%= item.dia %> / 
+                        <%= item.mes %> / 
+                        <%= item.ano %></span>
+                        Estoque:<span><%= item.estoque %></span>
+                    </section>
+
+                </ul>
+                <% }); %> 
     </main>
 
 

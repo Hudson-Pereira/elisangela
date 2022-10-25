@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <title>Adicionar Produto</title>
+</head>
+<body>
+    <header> 
+        <nav>
+        <a href="/"><input type="button" value="Início"></a>
+        <a href="/produto"><input type="button" value="Produtos"></a>
+
+        </nav>
+        <h1>Espaço Lisa Ribeiro</h1>
+    </header>
+    <main>
+        
+            <form id="dados" action="./add" method="POST">       
+                <label for="nome"><p>NOME</p></label>
+                <article>
+                    <input type="text" id= "nome" name="nome" placeholder="Insira o nome do produto">
+                </article>
+                <label for="descricao"><p>DESCRIÇÃO</p></label>
+                <article>
+                    <input type="text" id= "descricao" name="descricao" placeholder="Insira a descrição do produto">
+                </article>
+                <label for="valor"><p>VALOR</p></label>
+                <article>
+                    <input type="text" id= "valor" name="valor" placeholder="Insira o valor do produto">
+                </article>
+                <label for="vendedor"><p>VENDEDOR</p></label>
+                <article>
+                    <input type="text" id= "vendedor" name="vendedor" placeholder="Insira o vendedor do produto">
+                </article>
+                <label>DATA DE VALIDADE</label>
+                <section id="data">
+                    <label for="dia"><p>DIA</p></label>
+                    <article>
+                        <input type="number" id= "dia" name="dia">
+                    </article>
+                    <label for="mes"><p>MÊS</p></label>
+                    <article>
+                        <input type="number" id= "mes" name="mes">
+                    </article>
+                    <label for="ano"><p>ANO</p></label>
+                    <article>
+                    <input type="number" id= "ano" name="ano">
+                    </article>
+                </section>
+    
+                <label for="estoque"><p>ESTOQUE</p></label>
+                <article>
+                    <input type="number" id= "estoque" name="estoque">
+                </article>
+
+             <button type="submit">Salvar</button>
+            </form>
+         
+    </main>
+    
+</body>
+</html>
