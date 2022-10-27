@@ -1,8 +1,12 @@
 body{
-    background: black url("./Lisa.jpeg") no-repeat right top;
+    background: black url("./Lisa.jpeg") repeat-y right top;
+}#inicio{
+    background: black url("./Lisa.jpeg") no-repeat center top; 
 }
 
 h1{
+    margin-left: 30px;
+    padding-left: 100px;
     color: rgb(226, 83, 107)
 }
 
@@ -21,8 +25,8 @@ h2{
 section#dados{
     display: flex;
     flex-direction: column;
-    width:300px;
-    height: 500px;
+    width:400px;
+    min-height: 100px;
     font-size: 30px;
     color: rgb(226, 83, 107);
     background-color: rgb(248, 172, 185);
@@ -35,6 +39,14 @@ section#dados{
     color: rgb(226, 83, 107);
     width: 300px;
     height: 50px;
+}#add{
+    background-color: rgb(248, 172, 185);
+    width:400px;
+    margin-left: 35px;
+    margin-bottom: 20px;
+    border-radius: 35px;
+    padding: 15px;
+    font-size: 25px;
 }
 
 span{
@@ -56,10 +68,13 @@ p{
 }
 
 input#dia{
+    margin-top: 18px;
     width: 50px
 }#mes{
+    margin-top: 18px;
     width: 50px
 }#ano{
+    margin-top: 18px;
     width: 50px
 }#estoque{
     width: 90px

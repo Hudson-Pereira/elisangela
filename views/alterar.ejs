@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <title>Espaço Lisa Ribeiro</title>
+</head>
+<body>
+    <header> 
+        <nav>
+        <a href="/"><input type="button" value="Início"></a>
+        <a href="/produto"><input type="button" value="Produtos"></a>
+        <a href="../add"><input type="button" value="Novo Produto"></a>
+        </nav>
+    </header>
+    <main>
+      <form id="dados" action="./<%= produto.id %>" method="POST">       
+            <label for="nome"><p>NOME</p></label>
+            <article>
+                <input type="text" id= "nome" name="nome" value="<%= produto.nome %>">
+            </article>
+            <label for="descricao"><p>DESCRIÇÃO</p></label>
+            <article>
+                <input type="text" id= "descricao" name="descricao" value="<%= produto.descricao %>">
+            </article>
+            <label for="valor"><p>VALOR</p></label>
+            <article>
+                <input type="text" id= "valor" name="valor" value="<%= produto.valor %>">
+            </article>
+            <label for="vendedor"><p>VENDEDOR</p></label>
+            <article>
+                <input type="text" id= "vendedor" name="vendedor" value="<%= produto.vendedor %>">
+            </article>
+            <label>DATA DE VALIDADE</label>
+            <section id="data">
+                <label for="dia"><p>DIA</p></label>
+                <article>
+                    <input type="number" min="1" max="31" id= "dia" name="dia" value="<%= produto.dia %>">
+                </article>
+                <label for="mes"><p>MÊS</p></label>
+                <article>
+                    <input type="number" min="1" max="12" id= "mes" name="mes" value="<%= produto.mes %>">
+                </article>
+                <label for="ano"><p>ANO</p></label>
+                <article>
+                <input type="number" min= "2022" maxlength="4" id= "ano" name="ano" value="<%= produto.ano %>">
+                </article>
+            </section>
+
+            <label for="estoque"><p>ESTOQUE</p></label>
+            <article>
+                <input type="number" id= "estoque" name="estoque" value="<%= produto.estoque %>">
+            </article>
+
+         <button type="submit">Salvar</button>
+        </form>
+    </main>
+</body>
+</html>

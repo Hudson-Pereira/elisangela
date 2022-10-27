@@ -1,22 +1,17 @@
-const mongoose = require("mongoose");
-//`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_BASE}`,
+const PrismaClient = require("@prisma/client");
 
-async function Connected() {
-  await mongoose
-    .connect(
-      `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_BASE}`,
-
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      }
-    )
-    .then(() => {
-      console.log("Conectado ao MongoDB/Atlas...");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+async function main() {
+  // Connect the client
+  await PrismaClient.$connect()
+  // ... you will write your Prisma Client queries here
 }
 
-module.exports = Connected;
+main()
+  .then(async () => {
+    await PrismaClient.$disconnect()
+      })
+  .catch(async (e) => {
+    console.error(e)
+    await PrismaClient.$disconnect()
+    process.exit(1)
+  })

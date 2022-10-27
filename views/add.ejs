@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
 
-    <title>Adicionar Produto</title>
+    <title>Espaço Lisa Ribeiro</title>
 </head>
 <body>
     <header> 
@@ -18,7 +18,7 @@
         <h1>Espaço Lisa Ribeiro</h1>
     </header>
     <main>
-        
+        <section id="add">
             <form id="dados" action="./add" method="POST">       
                 <label for="nome"><p>NOME</p></label>
                 <article>
@@ -26,7 +26,7 @@
                 </article>
                 <label for="descricao"><p>DESCRIÇÃO</p></label>
                 <article>
-                    <input type="text" id= "descricao" name="descricao" placeholder="Insira a descrição do produto">
+                    <textarea id= "descricao" name="descricao" placeholder="Insira a descrição do produto"></textarea>
                 </article>
                 <label for="valor"><p>VALOR</p></label>
                 <article>
@@ -40,15 +40,15 @@
                 <section id="data">
                     <label for="dia"><p>DIA</p></label>
                     <article>
-                        <input type="number" id= "dia" name="dia">
+                        <input type="number" min="1" max="31" id= "dia" name="dia">
                     </article>
                     <label for="mes"><p>MÊS</p></label>
                     <article>
-                        <input type="number" id= "mes" name="mes">
+                        <input type="number" min="1" max="12" id= "mes" name="mes">
                     </article>
                     <label for="ano"><p>ANO</p></label>
                     <article>
-                    <input type="number" id= "ano" name="ano">
+                    <input type="number" min= "2022" maxlength="4" id= "ano" name="ano">
                     </article>
                 </section>
     
@@ -59,6 +59,7 @@
 
              <button type="submit">Salvar</button>
             </form>
+        </section>
          
     </main>
     

@@ -13,15 +13,16 @@
         <nav>
         <a href="/"><input type="button" value="Início"></a>
         <a href="produto/add"><input type="button" value="Novo Produto"></a>
-
         </nav>
-        <h1>Espaço Lisa Ribeiro</h1>
+        <h1>Lista de Produtos</h1>
     </header>
     <main>
 
             <% produtos.forEach(item => { %> 
                 <ul id="detalhes">
-                    <section id="dados">Nome:<span><%= item.nome %></span> 
+                    <section id="dados">
+                        ID:<span><%= item.id %></span>
+                        Nome:<span><%= item.nome %></span> 
                         Descrição:<span><%= item.descricao %></span>
                         Valor:<span><%= item.valor %></span>
                         Vendedor:<span><%= item.vendedor%></span>
@@ -29,13 +30,21 @@
                         <%= item.mes %> / 
                         <%= item.ano %></span>
                         Estoque:<span><%= item.estoque %></span>
+                   
+                            <a href="produto/alterar/<%= item.id%>"><button>Alterar</button></a>
+                            <a href="produto/deletar/<%= item.id%>"><button>Deletar</button></a>
+                        
                     </section>
-
+                    
                 </ul>
+                
                 <% }); %> 
+                
     </main>
 
 
-    <script src="/js/script.js"></script>
+    <script>
+       
+    </script>
 </body>
 </html>
