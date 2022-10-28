@@ -4,6 +4,8 @@ body{
 
 }#inicio{
     background: black url("./Lisa.jpeg") no-repeat center top; 
+    background-size: 45%;
+
 }
 
 h1{
