@@ -7,7 +7,7 @@ const prisma = new PrismaClient()
 const app = express()
 
 app.set("view engine", "ejs"); 
-app.use(express.static(path.join("public"))); 
+app.use(express.static(path.join("./"))); 
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
