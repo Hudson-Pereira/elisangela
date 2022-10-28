@@ -9,6 +9,36 @@
     <title>Serviços</title>
 </head>
 <body>
-    
+    <header> 
+        <nav>
+        <a href="/"><input type="button" value="Inicio"></a>
+        <a href="/produto"><input type="button" value="Produtos"></a>
+        <a href="produto/add"><input type="button" value="Novo Produto"></a>
+        <a href="servicos/add"><input type="button" value="Novo Serviço"></a>
+        </nav>
+        <!-- <h1>Espaço Lisa Ribeiro</h1> -->
+
+    </header>
+    <main>
+
+        <% servicos.forEach(item => { %> 
+            <ul id="detalhes">
+                <section id="dados">
+                    ID:<span><%= item.id %></span>
+                    Nome:<span><%= item.nome %></span> 
+                    Descrição:<span><%= item.descricao %></span>
+                    Valor:<span><%= item.valor %></span>
+                    Produtos:<span><%= item.produto %></span>
+                                   
+                        <a href="servico/alterar/<%= item.id%>"><button>Alterar</button></a>
+                        <a href="servico/deletar/<%= item.id%>"><button>Deletar</button></a>
+                    
+                </section>
+                
+            </ul>
+            
+            <% }); %> 
+            
+</main>
 </body>
 </html>

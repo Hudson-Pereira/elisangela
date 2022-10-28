@@ -1,5 +1,7 @@
 body{
     background: black url("./Lisa.jpeg") repeat-y right top;
+    background-size: 50%;
+
 }#inicio{
     background: black url("./Lisa.jpeg") no-repeat center top; 
 }

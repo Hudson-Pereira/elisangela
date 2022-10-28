@@ -7,14 +7,24 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model produtos {
-  id        String @id @default(auto()) @map("_id") @db.ObjectId
-  nome      String
-  valor     String
+model Produtos {
+  id        String     @id @default(auto()) @map("_id") @db.ObjectId
+  nome      String     @unique
+  valor     Float
   descricao String
-  dia       String
-  mes       String
-  ano       String
-  estoque   String
+  dia       Int
+  mes       Int
+  ano       Int
+  estoque   Int
   vendedor  String
+  servicos  Servicos[]
+}
+
+model Servicos {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  nome      String   @unique
+  valor     Float
+  produtos  Produtos @relation(fields: [produto], references: [nome])
+  produto   String[]
+  descricao String
 }

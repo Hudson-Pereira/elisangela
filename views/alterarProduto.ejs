@@ -14,6 +14,8 @@
         <a href="/"><input type="button" value="Início"></a>
         <a href="/produto"><input type="button" value="Produtos"></a>
         <a href="../add"><input type="button" value="Novo Produto"></a>
+        <a href="servicos"><input type="button" value="Serviço"></a>
+        <a href="servicos/add"><input type="button" value="Novo Serviço"></a>       
         </nav>
     </header>
     <main>
@@ -28,7 +30,7 @@
             </article>
             <label for="valor"><p>VALOR</p></label>
             <article>
-                <input type="text" id= "valor" name="valor" value="<%= produto.valor %>">
+                <input type="number" step="0.1" id= "valor" name="valor" value="<%= produto.valor %>">
             </article>
             <label for="vendedor"><p>VENDEDOR</p></label>
             <article>
