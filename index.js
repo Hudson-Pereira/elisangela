@@ -12,7 +12,7 @@ app.use(express.static(path.join("public")));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
-app.get("/", (req, res) => { //Rota geral
+app.get("/", (req, res) => { 
     try {
         res.status(200).render('inicio');
     } catch (err) {
@@ -146,7 +146,139 @@ app.post("/servicos/add", async (req, res) => {
         throw new Error("Erro!!!!")
     }
 })
-//TODO: fazer alterar serviço, agenda e depois as automatizações
+
+app.get("/servico/alterar/:id", async (req, res) => {
+    try {
+        const { id } = req.params
+        const servico = await prisma.servicos.findUnique({ where: { id } })
+        res.status(200).render('alterarServico', { servico: servico })
+    } catch (err) {
+        console.error(`Rota /servico/alterar: ${err.message}`)
+        throw new Error("Erro!!!!")
+    }
+})
+
+app.post("/servico/alterar/:id", async (req, res) => {
+    try {
+        const { id } = req.params
+        const produto = await prisma.servicos.update({
+            where: { id },
+            data: {
+                nome: req.body.nome,
+                descricao: req.body.descricao,
+                valor: parseFloat(req.body.valor),
+                produto: req.body.produto
+            }
+        })
+
+        res.status(200).redirect('/servicos')
+    } catch(err) {
+        console.error(`Rota post /servico/alterar: ${err.message}`)
+        throw new Error("Erro!!!!")
+    }
+})
+
+app.get("/servico/deletar/:id", async (req, res) => {
+    try {
+        const { id } = req.params
+        const produto = await prisma.servicos.delete({
+            where: {
+                id
+            }
+        })
+
+        res.status(200).redirect('/servicos')
+    } catch (err) {
+        console.error(`Rota /servico/deletar ${err.message}`)
+        throw new Error("Erro!!!!")
+    }
+})
+
+app.get("/agenda", async (req, res) => {
+    try { 
+        const agenda = await prisma.agenda.findMany({})
+        res.status(200).render('agenda', {
+            agenda: agenda
+        })
+    } catch (err) {
+        console.error(`Rota /agenda ${err.message}`)
+    }
+})
+
+app.get("/agenda/add", async (req, res) => {
+    try {
+        res.status(200).render('addAgenda')
+    } catch (err) {
+        console.error(`Rota /agenda/add: ${err.message}`)
+        throw new Error("Erro!!!!")
+    }
+})
+
+app.post("/agenda/add", async (req, res) => {
+    try {
+        let { nome, data, hora } = req.body
+        
+        await prisma.agenda.create({
+            data: {
+                nome, data, hora
+            },
+        })
+        res.status(200).redirect('/agenda')
+    } catch(err) {
+        console.error(`Rota post /agenda/add: ${err.message}`)
+        throw new Error("Erro!!!!")
+    }
+})
+
+app.get('/agenda/alterar/:id', async (req, res) => {
+    try {
+        const { id } = req.params
+        const agenda = await prisma.agenda.findUnique({ where: { id } })
+        res.status(200).render('alterarAgenda', { agenda: agenda })
+    } catch (err) {
+        console.error(`Rota /agenda/alterar: ${err.message}`)
+        throw new Error("Erro!!!!")
+    }
+})
+
+app.post("/agenda/alterar/:id", async (req, res) => {
+    try {
+        const { id } = req.params
+        const produto = await prisma.agenda.update({
+            where: { id },
+            data: {
+                nome: req.body.nome,
+                data: req.body.data,
+                hora: req.body.hora
+            }
+        })
+
+        res.status(200).redirect('/agenda')
+    } catch(err) {
+        console.error(`Rota post /agenda/alterar: ${err.message}`)
+        throw new Error("Erro!!!!")
+    }
+})
+
+app.get("/agenda/deletar/:id", async (req, res) => {
+    try {
+        const { id } = req.params
+        const produto = await prisma.agenda.delete({
+            where: {
+                id
+            }
+        })
+
+        res.status(200).redirect('/agenda')
+    } catch (err) {
+        console.error(`Rota /agenda/deletar ${err.message}`)
+        throw new Error("Erro!!!!")
+    }
+})
+
+
+
+//TODO:fazer as automatizações e validações depois ajustes css
 app.listen(process.env.PORT, () => {
     console.log(`Rodando em http://localhost:${port}.`);
   });

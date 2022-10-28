@@ -28,3 +28,10 @@ model Servicos {
   produto   String[]
   descricao String
 }
+
+model Agenda {
+  id   String @id @default(auto()) @map("_id") @db.ObjectId
+  nome String
+  data String
+  hora String
+}

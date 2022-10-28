@@ -14,11 +14,14 @@
         <a href="/"><input type="button" value="Início"></a>
         <a href="/produto"><input type="button" value="Produtos"></a>
         <a href="../add"><input type="button" value="Novo Produto"></a>
-        <a href="servicos"><input type="button" value="Serviço"></a>
-        <a href="servicos/add"><input type="button" value="Novo Serviço"></a>       
+        <a href="/servicos"><input type="button" value="Serviço"></a>
+        <a href="/servicos/add"><input type="button" value="Novo Serviço"></a>       
         </nav>
+        <h1>Alterar Produto</h1>
+
     </header>
     <main>
+        <section id="add">
       <form id="dados" action="./<%= produto.id %>" method="POST">       
             <label for="nome"><p>NOME</p></label>
             <article>
@@ -59,6 +62,7 @@
 
          <button type="submit">Salvar</button>
         </form>
+        </section>
     </main>
 </body>
 </html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <title>Espaço Lisa Ribeiro</title>
+</head>
+<body>
+    <header> 
+        <nav>
+        <a href="/"><input type="button" value="Início"></a>
+        <a href="produto/add"><input type="button" value="Novo Produto"></a>
+        <a href="servicos"><input type="button" value="Serviço"></a>
+        <a href="servicos/add"><input type="button" value="Novo Serviço"></a>
+        <a href="agenda/add"><input type="button" value="Novo Agendamento"></a>
+
+        </nav>
+        <h1>Agendamentos</h1>
+    </header>
+    <main>
+
+            <% agenda.forEach(item => { %> 
+                <ul id="detalhes">
+                    <section id="dados">
+                        
+                        NOME:<span><%= item.nome %></span>
+                        DATA:<span><%= item.data %></span>
+                        HORA:<span><%= item.hora %></span>
+                   
+                            <a href="agenda/alterar/<%= item.id%>"><button>Alterar</button></a>
+                            <a href="agenda/deletar/<%= item.id%>"><button>Deletar</button></a>
+                        
+                    </section>
+                    
+                </ul>
+                
+                <% }); %> 
+                
+    </main>
+
+
+    <script>
+       
+    </script>
+</body>
+</html>

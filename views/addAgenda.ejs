@@ -16,28 +16,23 @@
         <a href="/produto"><input type="button" value="Produtos"></a>
         <a href="../produto/add"><input type="button" value="Novo Produto"></a>
         </nav>
-        <h1>Adicionar Serviço</h1>
+        <h1>Adicionar Agendamento</h1>
     </header>
     <main>
         <section id="add">
             <form id="dados" action="./add" method="POST">       
                 <label for="nome"><p>NOME</p></label>
                 <article>
-                    <input type="text" id= "nome" name="nome" placeholder="Insira o nome do produto">
+                    <input type="text" id= "nome" name="nome" placeholder="Insira o nome">
                 </article>
-                <label for="descricao"><p>DESCRIÇÃO</p></label>
+                <label for="nome"><p>DATA</p></label>
                 <article>
-                    <textarea id= "descricao" name="descricao" placeholder="Insira a descrição do produto"></textarea>
+                    <input type="date" id= "data" name="data" placeholder="Insira a data">
                 </article>
-                <label for="valor"><p>VALOR</p></label>
+                <label for="nome"><p>HORA</p></label>
                 <article>
-                    <input type="number" step="0.1" id= "valor" name="valor" placeholder="Insira o valor do produto">
-                </article>
-                <label for="produto"><p>PRODUTO</p></label>
-                <article>
-                    <input type="text" id= "produto" name="produto" placeholder="Insira o nome dos produtos">
-                </article>
-                
+                    <input type="time" id= "hora" name="hora" placeholder="Insira a hora">
+                </article>               
 
              <button type="submit">Salvar</button>
             </form>
