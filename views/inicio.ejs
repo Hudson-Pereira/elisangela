@@ -4,24 +4,55 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/style.css"">
+    <link rel="stylesheet" href="../public/css/style.css">
 
     <title>Espaço Lisa Ribeiro</title>
 </head>
 <body id="inicio">
     <header> 
         <nav>
-        <a href="produto"><input type="button" value="Produtos"></a>
-        <a href="produto/add"><input type="button" value="Novo Produto"></a>
-        <a href="servicos"><input type="button" value="Serviço"></a>
-        <a href="servicos/add"><input type="button" value="Novo Serviço"></a>
-        <a href="agenda"><input type="button" value="Agenda"></a>
+        <a href="produto"><button>Produtos</button></a>
+        <a href="produto/add"><button>Novo Produto</button></a>
+        <a href="servicos"><button>Serviços</button></a>
+        <a href="servicos/add"><button>Novo Serviço</button></a>
+        <a href="agenda"><button>Agenda</button></a>
+        <a href="caixa"><button>Caixa</button></a>
+
         </nav>
-
-        <!-- <h1>Espaço Lisa Ribeiro</h1> -->
-
+        <h1 id="msg">DEUS SEJA LOUVADO</h1>
     </header>
     <main>
+        <section id="msgs">
+            <section id="msgp">
+            <h3>Produtos perto do vencimento</h3>
+        <% produtos.forEach(item => { %> 
+            <ul id="detalhes">
+                <section id="dados">
+                    Nome:<span><%= item.nome %></span> 
+                    Data de validade:<span><%= item.data %></span>
+                    Estoque:<span><%= item.estoque %></span>
+                    </section>
+            </ul>
+        <% }); %> 
+            </section>
+            <section id="msga">
+            <h3>Agendas de hoje</h3>
+
+                <% agendas.forEach(item => { %> 
+                    <ul id="detalhes">
+                        <section id="dados">
+                            
+                            Nome:<span><%= item.nome %></span> 
+                            Data:<span><%= item.data %></span>
+                            HORA:<span><%= item.hora %></span>
+                        
+                        </section>
+                        
+                    </ul>
+                    
+                    <% }); %> 
+                </section>
+        </section>
     </main>
     
 </body>

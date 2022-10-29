@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/style.css"">
+    <link rel="stylesheet" href="../public/css/style.css">
 
     <title>Espaço Lisa Ribeiro</title>
 </head>
 <body>
     <header> 
         <nav>
-        <a href="/"><input type="button" value="Início"></a>
-        <a href="produto/add"><input type="button" value="Novo Produto"></a>
-        <a href="servicos"><input type="button" value="Serviço"></a>
-        <a href="servicos/add"><input type="button" value="Novo Serviço"></a>
-        <a href="agenda/add"><input type="button" value="Novo Agendamento"></a>
+        <a href="/"><button>Início</button></a>
+        <a href="produto/add"><button>Novo Produto</button></a>
+        <a href="servicos"><button>Serviços</button></a>
+        <a href="servicos/add"><button>Novo Serviço</button></a>
+        <a href="agenda/add"><button>Novo Agendamento</button></a>
 
         </nav>
         <h1>Agendamentos</h1>
@@ -29,10 +29,11 @@
                         NOME:<span><%= item.nome %></span>
                         DATA:<span><%= item.data %></span>
                         HORA:<span><%= item.hora %></span>
-                   
+                        VALOR:<span><%= item.preco %></span>
+                        <section id="mani">
                             <a href="agenda/alterar/<%= item.id%>"><button>Alterar</button></a>
                             <a href="agenda/deletar/<%= item.id%>"><button>Deletar</button></a>
-                        
+                        </section>
                     </section>
                     
                 </ul>

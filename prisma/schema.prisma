@@ -12,12 +12,11 @@ model Produtos {
   nome      String     @unique
   valor     Float
   descricao String
-  dia       Int
-  mes       Int
-  ano       Int
-  estoque   Int
+  data      String
+  estoque   Float
   vendedor  String
   servicos  Servicos[]
+  createdAt DateTime   @default(now())
 }
 
 model Servicos {
@@ -30,8 +29,9 @@ model Servicos {
 }
 
 model Agenda {
-  id   String @id @default(auto()) @map("_id") @db.ObjectId
-  nome String
-  data String
-  hora String
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  nome  String
+  data  String
+  hora  String
+  preco Float
 }

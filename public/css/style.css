@@ -1,29 +1,42 @@
 body{
-    background: black url("./Lisa.jpeg") repeat-y right top;
+    background: black url("./Lisa.jpeg") repeat-y right 50px;
     background-size: 50%;
 
 }#inicio{
-    background: black url("./Lisa.jpeg") no-repeat center top; 
-    background-size: 45%;
+    background: black url("./Lisa.jpeg") repeat-y center 50px; 
+    background-size: 40%;
 
+}
+
+nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+button{
+    border-radius: 8px;
+    font-size: 20px;
+    background-color: rgb(226, 83, 107) 
+}#salvar{
+margin-left: 150px;
 }
 
 h1{
     margin-left: 30px;
     padding-left: 100px;
     color: rgb(226, 83, 107)
-}
-
-button#enviar{
-    margin-top: 10px
-}
-
-p#prod{
-    color: white
+}#msg{
+    text-align: center;
 }
 
 h2{
     color: rgb(226, 83, 107) 
+}
+
+h3{
+    color: rgb(226, 83, 107);
+    text-align: center; 
 }
 
 section#dados{
@@ -51,6 +64,14 @@ section#dados{
     border-radius: 35px;
     padding: 15px;
     font-size: 25px;
+}#mani{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}#msgs{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 span{
@@ -61,6 +82,8 @@ span{
 
 label{
     color: rgb(226, 83, 107);
+}#data{
+    height: 30px;
 }
 
 article{

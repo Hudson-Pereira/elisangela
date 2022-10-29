@@ -11,10 +11,10 @@
 <body>
     <header> 
         <nav>
-        <a href="/"><input type="button" value="Início"></a>
-        <a href="produto/add"><input type="button" value="Novo Produto"></a>
-        <a href="servicos"><input type="button" value="Serviço"></a>
-        <a href="servicos/add"><input type="button" value="Novo Serviço"></a>
+        <a href="/"><button>Início</button></a>
+        <a href="produto/add"><button>Novo Produto</button></a>
+        <a href="servicos"><button>Serviços</button></a>
+        <a href="servicos/add"><button>Novo Serviço</button></a>
         </nav>
         <h1>Lista de Produtos</h1>
     </header>
@@ -28,14 +28,12 @@
                         Descrição:<span><%= item.descricao %></span>
                         Valor:<span><%= item.valor %></span>
                         Vendedor:<span><%= item.vendedor%></span>
-                        Data de validade:<span><%= item.dia %> / 
-                        <%= item.mes %> / 
-                        <%= item.ano %></span>
+                        Data de validade:<span><%= item.data %></span>
                         Estoque:<span><%= item.estoque %></span>
-                   
-                            <a href="produto/alterar/<%= item.id%>"><button>Alterar</button></a>
-                            <a href="produto/deletar/<%= item.id%>"><button>Deletar</button></a>
-                        
+                            <section id="mani">
+                                <a href="produto/alterar/<%= item.id%>"><button>Alterar</button></a>
+                                <a href="produto/deletar/<%= item.id%>"><button>Deletar</button></a>
+                            </section>
                     </section>
                     
                 </ul>

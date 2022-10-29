@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/style.css">
+
+    <title>Espaço Lisa Ribeiro</title>
+</head>
+<body>
+    <header> 
+        <nav>
+        <a href="/"><button>Início</button></a>
+        <a href="produto"><button>Produtos</button></a>
+        <a href="produto/add"><button>Novo Produto</button></a>
+        <a href="servicos"><button>Serviços</button></a>
+        <a href="servicos/add"><button>Novo Serviço</button></a>
+
+        </nav>
+        <h1>CAIXA</h1>
+    </header>
+    <main>
+        <section id="add">
+            <form id="dados" action="./caixa" method="POST">       
+                <label><p>DATA INICIAL</p></label>
+                <article>
+                    <input type="date" id= "dataI" name="dataI">
+                </article>
+                <label><p>DATA FINAL</p></label>
+                <article>
+                    <input type="date" id= "dataF" name="dataF">
+                </article>
+                              
+
+             <button type="submit" id="salvar">Verificar</button>
+            </form>
+        </section>
+            
+                
+    </main>
+
+
+    <script>
+       
+    </script>
+</body>
+</html>
