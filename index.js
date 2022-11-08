@@ -11,7 +11,7 @@ app.set("views","./views")
 app.use(express.static(path.join("./"))); 
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
-
+//
 app.get("/", async (req, res) => { 
     try {
         let hoje = new Date()
