@@ -35,7 +35,7 @@ app.get("/", async (req, res) => {
             }
         })
 
-        res.status(200).render('inicio.ejs',{agendas: agendas, produtos:produtos});
+        res.status(200).render('inicio',{agendas: agendas, produtos:produtos});
     } catch (err) {
         console.error(`Rota /: ${err.message}`)
         throw new Error("Erro!!!!")
