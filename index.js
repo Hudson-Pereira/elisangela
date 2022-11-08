@@ -112,6 +112,7 @@ app.post("/produto/alterar/:id", async (req, res) => {
     }
 })
 
+
 app.get("/produto/deletar/:id", async (req, res) => {
     try {
         const { id } = req.params
