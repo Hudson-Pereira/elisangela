@@ -45,6 +45,32 @@ app.get("/agenda", async (req, res) => {
     }
 })
 
+app.get("/agenda/add", async (req, res) => {
+    try {
+        res.status(200).render('addAgenda')
+    } catch (err) {
+        console.error(`Rota /agenda/add: ${err.message}`)
+        throw new Error("Erro!!!!")
+    }
+})
+
+app.post("/agenda/add", async (req, res) => {
+    try {
+        let { nome, data, hora, preco } = req.body
+        preco = parseFloat(preco)
+        
+        await prisma.agenda.create({
+            data: {
+                nome, data, hora, preco
+            },
+        })
+        res.status(200).redirect('/agenda')
+    } catch(err) {
+        console.error(`Rota post /agenda/add: ${err.message}`)
+        res.status(200).redirect('/agenda')
+    }
+})
+//TODO: setar pagina /login como inicial == 
 const InicioRouter = require("./routers/inicio.routes")
 app.use('/', authenticationMiddleware, InicioRouter)
 
@@ -61,5 +87,5 @@ const CaixaRouter = require("./routers/caixa.routes");
 app.use("/caixa", authenticationMiddleware, CaixaRouter);
 
 app.listen(process.env.PORT, () => {
-  console.log(`Rodando em http://localhost:${port}.`);
+  console.log(`Rodando em http://localhost:${port}/login.`);
 });
