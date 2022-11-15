@@ -1,59 +1,65 @@
-const express = require('express');
-const path= require('path');
-const {PrismaClient} = require('@prisma/client');
+const express = require("express");
+const path = require("path");
+const { PrismaClient } = require("@prisma/client");
 
-const port = process.env.PORT || 3000
-const prisma = new PrismaClient()
-const app = express()
+const port = process.env.PORT || 3000;
+const prisma = new PrismaClient();
 
-app.set("view engine", "ejs"); 
-app.set("views","./views")
-app.use(express.static(path.join("./"))); 
-app.use(express.urlencoded({extended: false}));
+const passport = require("passport");
+const session = require("express-session");
+
+const app = express();
+
+app.set("view engine", "ejs");
+app.set("views", "./views");
+
+require('./auth')(passport);
+app.use(session({
+    secret: '123',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 60 * 60 * 1000}
+}))
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(express.static(path.join("./")));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-//
-app.get("/", async (req, res) => { 
-    try {
-        let hoje = new Date()
-        const dia = hoje.getDate()
-        const mes = hoje.getMonth() + 1
-        const ano = hoje.getFullYear()
-        
-        hoje = `${ano}-${mes}-${dia}`
-        const hojeS = hoje.toString()
 
-        let produtos = await prisma.produtos.findMany({})
-        let agendas = await prisma.agenda.findMany({where:{data: hojeS}})
+function authenticationMiddleware(req, res, next) {
+    if (req.isAuthenticated()) return next();
+    res.redirect('/login?fail=true')
+}
 
-        produtos = produtos.filter((produto) => {
-            if (produto.data > hoje) {
-                const mesP = parseInt(produto.data.slice(5, 8).toString());
-                const mesA = parseInt(hojeS.slice(5, 8));
-                if (mesP > mesA && mesP <= mesA + 2 ) {
-                    return produto
-                }
-            }
+const LoginRouter = require("./routers/login.routes");
+app.use("/login", LoginRouter);
+
+app.get("/agenda", async (req, res) => {
+    try { 
+        const agenda = await prisma.agenda.findMany({})
+        res.status(200).render('agenda', {
+            agenda: agenda
         })
-
-        res.status(200).render('inicio',{agendas: agendas, produtos:produtos});
     } catch (err) {
-        console.error(`Rota /: ${err.message}`)
-        throw new Error("Erro!!!!")
+        console.error(`Rota /agenda ${err.message}`)
     }
-});
+})
 
-const ProdutoRouter = require("./routers/produto.routes")
-app.use("/produto", ProdutoRouter);
+const InicioRouter = require("./routers/inicio.routes")
+app.use('/', authenticationMiddleware, InicioRouter)
 
-const ServicoRouter = require("./routers/servico.routes")
-app.use("/servicos", ServicoRouter);
+const ProdutoRouter = require("./routers/produto.routes");
+app.use("/produto", authenticationMiddleware, ProdutoRouter);
 
-const AgendaRouter = require("./routers/agenda.routes")
-app.use("/agenda", AgendaRouter);
+const ServicoRouter = require("./routers/servico.routes");
+app.use("/servicos", authenticationMiddleware, ServicoRouter);
 
-const CaixaRouter = require("./routers/caixa.routes")
-app.use("/caixa", CaixaRouter);
+const AgendaRouter = require("./routers/agenda.routes");
+app.use("/agenda", authenticationMiddleware, AgendaRouter);
+
+const CaixaRouter = require("./routers/caixa.routes");
+app.use("/caixa", authenticationMiddleware, CaixaRouter);
 
 app.listen(process.env.PORT, () => {
-    console.log(`Rodando em http://localhost:${port}.`);
-  });
+  console.log(`Rodando em http://localhost:${port}.`);
+});

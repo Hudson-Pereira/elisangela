@@ -3,24 +3,28 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type":"commonjs",
+  "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "start:dev": "nodemon index.js",
-    "deploy":"vercel deploy --prod"
+    "deploy": "vercel deploy --prod"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^4.5.0",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.1",
     "dotenv": "^16.0.3",
     "ejs": "^3.1.8",
     "express": "^4.18.2",
+    "express-session": "^1.17.3",
     "express-validator": "^6.14.2",
     "mongodb": "^4.11.0",
-    "mongoose": "^6.6.7"
+    "mongoose": "^6.6.7",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "prisma": "^4.5.0"

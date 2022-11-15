@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../public/css/style.css">
+    
+        <title>Espaço Lisa Ribeiro</title>
+    </head>
+    <body>
+        <section id="login">
+        <h1><%= title %></h1>
+
+        <form action="/login" method="POST">
+          <input name="username" id="username" type="text" placeholder="Nome"/><br />
+          <input name="password" id="password" type="password" placeholder="Senha"/><br />
+          <button type="submit">Login</button>
+        </form>
+        <% if(message) { %>
+          <p>
+            <label style="color:Red"><%= message %></label>
+          </p>
+        <%}%>
+        <p>
+          <a href="/users/forgot">Esqueceu sua senha?</a>
+        </p>
+    </section>
+      </body>
+</html>

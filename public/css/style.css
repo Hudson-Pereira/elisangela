@@ -72,6 +72,10 @@ section#dados{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+}#login{
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
 }
 
 span{
@@ -107,5 +111,10 @@ input#dia{
     width: 90px
 }#descricao{
     height: 150px;
+}#username{
+    margin: 5px;
+}#password{
+    margin: 5px;
+
 }
 

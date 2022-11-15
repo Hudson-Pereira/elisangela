@@ -4,16 +4,16 @@ const router = express.Router();
 const {PrismaClient} = require('@prisma/client');
 const prisma = new PrismaClient()
 
-router.get("/", async (req, res) => {
-    try { 
-        const agenda = await prisma.agenda.findMany({})
-        res.status(200).render('agenda', {
-            agenda: agenda
-        })
-    } catch (err) {
-        console.error(`Rota /agenda ${err.message}`)
-    }
-})
+// router.get("/", async (req, res) => {
+//     try { 
+//         const agenda = await prisma.agenda.findMany({})
+//         res.status(200).render('agenda', {
+//             agenda: agenda
+//         })
+//     } catch (err) {
+//         console.error(`Rota /agenda ${err.message}`)
+//     }
+// })
 
 router.get("/add", async (req, res) => {
     try {
