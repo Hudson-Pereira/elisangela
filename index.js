@@ -58,6 +58,7 @@ app.post("/agenda/add", async (req, res) => {
     try {
         let { nome, data, hora, preco } = req.body
         preco = parseFloat(preco)
+        if (!preco) preco = 0;
         
         await prisma.agenda.create({
             data: {
