@@ -37,7 +37,7 @@ function authenticationMiddleware(req, res, next) {
 }
 
 app.get('/', (req, res) => {
-    res.redirect('/login')
+    res.redirect('/cliente/agenda')
 });
 
 const LoginRouter = require("./routers/login.routes");
@@ -58,8 +58,8 @@ app.use("/agenda", authenticationMiddleware, AgendaRouter);
 const CaixaRouter = require("./routers/caixa.routes");
 app.use("/caixa", authenticationMiddleware, CaixaRouter);
 
-// const ClienteRouter = require("./routers/clientes.routes");
-// app.use("/")
+const ClienteRouter = require("./routers/clientes.routes");
+app.use("/cliente", ClienteRouter)
 
 app.listen(process.env.PORT, () => {
   console.log(`Rodando em http://localhost:${port}.`);

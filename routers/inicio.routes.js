@@ -8,7 +8,7 @@ const prisma = new PrismaClient()
 router.get("/", async (req, res) => {
     try {
       let hoje = new Date();
-      const dia = hoje.getDate();
+      const dia = hoje.getDate().toString().padStart(2,"0");
       const mes = hoje.getMonth() + 1;
       const ano = hoje.getFullYear();
   
@@ -20,11 +20,20 @@ router.get("/", async (req, res) => {
   
       produtos = produtos.filter((produto) => {
         if (produto.data > hoje) {
+          
           const mesP = parseInt(produto.data.slice(5, 8).toString());
           const mesA = parseInt(hojeS.slice(5, 8));
-          if (mesP > mesA && mesP <= mesA + 2) {
+          const anoP = parseInt(produto.data.slice(0, 4).toString())
+          const anoA = parseInt(hojeS.slice(0, 4));
+          if (anoP > anoA) {
+            if (mesP <= 2) {
+              return produto
+            }
+          }
+          if (mesP >= mesA && mesP <= mesA + 2) {
             return produto;
           }
+
         }
       });
   

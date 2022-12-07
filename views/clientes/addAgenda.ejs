@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="../../public/css/style.css">
 
     <title>Espaço Lisa Ribeiro</title>
 </head>
@@ -12,18 +12,13 @@
     <header> 
         <nav>
         <a href="/admin"><button>Início</button></a>
-        <a href="../servicos"><button>Serviços</button></a>
-        <a href="/servicos/add"><button>Novo Serviço</button></a>
-        <a href="/produto"><button>Produtos</button></a>
-        <a href="../produto/add"><button>Novo Produto</button></a>
-        <a href="/agenda"><button>Agenda</button></a>
-
+        <a href="/cliente/agenda"><button>Agenda</button></a>
         </nav>
         <h1>Adicionar Agendamento</h1>
     </header>
     <main>
         <section id="add">
-            <form id="dados" action="./add" method="POST">       
+            <form id="dados" action="../add" method="POST">       
                 <label for="nome"><p>NOME</p></label>
                 <article>
                     <input type="text" id= "nome" name="nome" placeholder="Insira o nome">

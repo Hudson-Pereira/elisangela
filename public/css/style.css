@@ -15,11 +15,14 @@ nav{
 }
 
 button{
+    cursor: pointer;
     border-radius: 8px;
     font-size: 20px;
     background-color: rgb(226, 83, 107) 
 }#salvar{
 margin-left: 150px;
+}.manipular{
+    margin: 0 30px 0 10px 
 }
 
 h1{
@@ -39,11 +42,31 @@ h3{
     text-align: center; 
 }
 
+.agenda{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
 section#dados{
     display: flex;
-    flex-direction: column;
-    width:400px;
-    min-height: 100px;
+    flex-flow: wrap row;
+    justify-content: center;
+    flex-wrap: wrap;
+    width:80%;
+    min-height: 50px;
+    font-size: 30px;
+    color: rgb(226, 83, 107);
+    background-color: rgb(248, 172, 185);
+    margin: 1% 5% ;
+    border-radius: 35px;
+    padding: 15px;
+}#dadosUser{
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: center;
+    width:450px;
+    min-height: 50px;
     font-size: 30px;
     color: rgb(226, 83, 107);
     background-color: rgb(248, 172, 185);
@@ -64,10 +87,10 @@ section#dados{
     border-radius: 35px;
     padding: 15px;
     font-size: 25px;
-}#mani{
+}#manipulacao{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
 }#msgs{
     display: flex;
     flex-direction: row;
@@ -115,6 +138,4 @@ input#dia{
     margin: 5px;
 }#password{
     margin: 5px;
-
 }
-

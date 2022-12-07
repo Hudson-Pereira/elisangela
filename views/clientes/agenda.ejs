@@ -11,31 +11,23 @@
 <body>
     <header> 
         <nav>
-        <a href="/admin"><button>Início</button></a> 
-        <a href="produto/add"><button>Novo Produto</button></a>
-        <a href="servicos"><button>Serviços</button></a>
-        <a href="servicos/add"><button>Novo Serviço</button></a>
-        <a href="agenda/add"><button>Novo Agendamento</button></a>
+        <a href="../admin"><button>Início</button></a> 
+        <a href="/cliente/agenda/add"><button>Novo Agendamento</button></a>
 
         </nav>
         <h1>Agendamentos</h1>
     </header>
-    <main class="agendaAdmin">
+    <main class="agenda">
 
             <% agenda.forEach(item => { %> 
                 <ul id="detalhes">
-                    <section id="dados">
-                        
+                    <section id="dadosUser">
                         NOME:<span><%= item.nome %></span>
                         DATA:<span><%= item.data %></span>
                         HORA:<span><%= item.hora %></span>
-                        VALOR:<span><%= item.preco %></span>
-                        Procedimento:<span><%= item.procedimento %></span>
+
                     </section>
-                    <section id="manipulacao">
-                        <a href="agenda/alterar/<%= item.id%>"><button class="manipular">Alterar</button></a>
-                        <a href="agenda/deletar/<%= item.id%>"><button class="manipular">Deletar</button></a>
-                    </section>
+                    
                 </ul>
                 
                 <% }); %> 

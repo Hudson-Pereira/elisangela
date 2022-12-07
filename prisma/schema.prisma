@@ -29,9 +29,10 @@ model Servicos {
 }
 
 model Agenda {
-  id    String @id @default(auto()) @map("_id") @db.ObjectId
-  nome  String
-  data  String
-  hora  String
-  preco Float
+  id           String @id @default(auto()) @map("_id") @db.ObjectId
+  nome         String
+  data         String
+  hora         String
+  preco        Float
+  procedimento String
 }
