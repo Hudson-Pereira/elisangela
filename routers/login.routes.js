@@ -20,7 +20,7 @@ router.get("/", async (req, res, next) => {
 
 router.post('/',
     passport.authenticate('local', {
-        successRedirect: '/',
+        successRedirect: '/admin',
         failureRedirect: '/login?fail=true'
     }));
 

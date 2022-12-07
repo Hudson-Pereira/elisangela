@@ -1,4 +1,6 @@
 const express = require("express");
+const session = require("express-session");
+const MemoryStore = require('memorystore')(session)
 const path = require("path");
 const { PrismaClient } = require("@prisma/client");
 
@@ -6,7 +8,6 @@ const port = process.env.PORT || 3000;
 const prisma = new PrismaClient();
 
 const passport = require("passport");
-const session = require("express-session");
 
 const app = express();
 
@@ -15,6 +16,10 @@ app.set("views", "./views");
 
 require('./auth')(passport);
 app.use(session({
+    store: new MemoryStore({
+        checkPeriod: 1800000,
+        ttl: 3600000
+    }),
     secret: '123',
     resave: false,
     saveUninitialized: false,
@@ -34,46 +39,9 @@ function authenticationMiddleware(req, res, next) {
 const LoginRouter = require("./routers/login.routes");
 app.use("/login", LoginRouter);
 
-app.get("/agenda", async (req, res) => {
-    try { 
-        const agenda = await prisma.agenda.findMany({})
-        res.status(200).render('agenda', {
-            agenda: agenda
-        })
-    } catch (err) {
-        console.error(`Rota /agenda ${err.message}`)
-    }
-})
-
-app.get("/agenda/add", async (req, res) => {
-    try {
-        res.status(200).render('addAgenda')
-    } catch (err) {
-        console.error(`Rota /agenda/add: ${err.message}`)
-        throw new Error("Erro!!!!")
-    }
-})
-
-app.post("/agenda/add", async (req, res) => {
-    try {
-        let { nome, data, hora, preco } = req.body
-        preco = parseFloat(preco)
-        if (!preco) preco = 0;
-        
-        await prisma.agenda.create({
-            data: {
-                nome, data, hora, preco
-            },
-        })
-        res.status(200).redirect('/agenda')
-    } catch(err) {
-        console.error(`Rota post /agenda/add: ${err.message}`)
-        res.status(200).redirect('/agenda')
-    }
-})
 //TODO: setar pagina /login como inicial == 
 const InicioRouter = require("./routers/inicio.routes")
-app.use('/', authenticationMiddleware, InicioRouter)
+app.use('/admin', authenticationMiddleware, InicioRouter)
 
 const ProdutoRouter = require("./routers/produto.routes");
 app.use("/produto", authenticationMiddleware, ProdutoRouter);
@@ -86,6 +54,9 @@ app.use("/agenda", authenticationMiddleware, AgendaRouter);
 
 const CaixaRouter = require("./routers/caixa.routes");
 app.use("/caixa", authenticationMiddleware, CaixaRouter);
+
+// const ClienteRouter = require("./routers/clientes.routes");
+// app.use("/")
 
 app.listen(process.env.PORT, () => {
   console.log(`Rodando em http://localhost:${port}/login.`);
