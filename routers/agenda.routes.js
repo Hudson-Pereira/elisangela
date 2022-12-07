@@ -24,24 +24,6 @@ router.get("/add", async (req, res) => {
     }
 })
 
-// router.post("/add", async (req, res) => {
-//     try {
-//         let { nome, data, hora, preco } = req.body
-//         preco = parseFloat(preco)
-        
-//         await prisma.agenda.create({
-//             data: {
-//                 nome, data, hora, preco
-//             },
-//         })
-//         res.status(200).redirect('/agenda')
-//     } catch(err) {
-//         console.error(`Rota post /agenda/add: ${err.message}`)
-//         res.status(200).redirect('/agenda')
-//     }
-// })
-
-
 router.get("/agenda/add", async (req, res) => {
     try {
         res.status(200).render('addAgenda')
@@ -54,6 +36,7 @@ router.get("/agenda/add", async (req, res) => {
 router.post("/add", async (req, res) => {
     try {
         let { nome, data, hora, preco } = req.body
+        if (!preco) preco = 0;
         preco = parseFloat(preco)
         
         await prisma.agenda.create({

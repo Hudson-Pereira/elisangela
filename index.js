@@ -36,10 +36,13 @@ function authenticationMiddleware(req, res, next) {
     res.redirect('/login?fail=true')
 }
 
+app.get('/', (req, res) => {
+    res.redirect('/login')
+});
+
 const LoginRouter = require("./routers/login.routes");
 app.use("/login", LoginRouter);
 
-//TODO: setar pagina /login como inicial == 
 const InicioRouter = require("./routers/inicio.routes")
 app.use('/admin', authenticationMiddleware, InicioRouter)
 
@@ -59,5 +62,5 @@ app.use("/caixa", authenticationMiddleware, CaixaRouter);
 // app.use("/")
 
 app.listen(process.env.PORT, () => {
-  console.log(`Rodando em http://localhost:${port}/login.`);
+  console.log(`Rodando em http://localhost:${port}.`);
 });
