@@ -1,40 +1,136 @@
+*{margin: 0; padding: 0;}
+
+a{
+    text-decoration: none;
+    color: black
+}
+
 body{
-    background: black url("./Lisa.jpeg") repeat-y right 50px;
+    display: flex;
+    flex-direction: column;
+    background: rgb(255, 255, 255) /*url("../images/Lisa-remove.png") repeat-y center 50px*/;
     background-size: 50%;
 
 }#inicio{
-    background: black url("./Lisa.jpeg") repeat-y center 50px; 
+    background: rgb(255, 255, 255) /*url("../images/Lisa-remove.png") no-repeat center 50px*/; 
     background-size: 40%;
+}
 
+header{
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(226, 83, 107);
+    height: 100%;
 }
 
 nav{
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    flex-flow: column wrap;
+    justify-content: center;
+}
+
+main{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}#inicioMain{
+    flex-flow: row wrap;
+    justify-content: space-around;
+    min-height: 350px;
+    align-items: baseline;
+    margin: 3% 0 0 0;
+}#produtoMain{
+    flex-flow: row wrap;
+    justify-content: space-around;
+}#servicoMain {
+    flex-flow: row wrap;
+    justify-content: space-around;
+}.agenda{
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.menu{
+    list-style:none;
+    border:1px solid #c0c0c0;
+    float:left;
+}
+
+.menu li{
+    position:relative;
+    float:left;
+    border-right:1px solid #c0c0c0;
+}
+
+.menu li a{color:#333; text-decoration:none; padding:5px 10px; display:block;}
+
+.menu li a:hover{
+background:#333;
+color:#fff;
+-moz-box-shadow:0 3px 10px 0 #CCC;
+-webkit-box-shadow:0 3px 10px 0 #ccc;
+text-shadow:0px 0px 5px #fff;
+}
+
+.menu li  ul{
+    position:absolute;
+    top:25px;
+    left:0;
+    background-color:#fff;
+    display:none;
+}
+
+.menu li:hover ul, .menu li.over ul{display:block;}
+
+.menu li ul li{
+    border:1px solid #c0c0c0;
+    display:block;
+    width:150px;
+    }
+
+h1{
+    text-align: center;
+    color: black(255, 255, 255);
+    margin: 5% 0 0 5%;
+}#msg{
+    display: flex;
+    justify-content: center;
 }
 
 button{
     cursor: pointer;
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 20px;
-    background-color: rgb(226, 83, 107) 
+    margin: 5px 3px 0 0; 
 }#salvar{
-margin-left: 150px;
+    margin-left: 150px;
 }.manipular{
     margin: 0 30px 0 10px 
+}#search{
+    height: 0;
+    width: 30px;
+    border: none
+}.agendamento{
+    border-width: 0;
+    background-clip: border-box;
+    border-radius: 10px;
+    background-color: black;
+}.submit{
+    border-width: 0;
+    background-clip: border-box;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    padding: 5px;
+
 }
 
-h1{
-    margin-left: 30px;
-    padding-left: 100px;
-    color: rgb(226, 83, 107)
-}#msg{
-    text-align: center;
-}
 
 h2{
-    color: rgb(226, 83, 107) 
+    color: rgb(226, 83, 107); 
+    display: flex;
+    justify-content: center;
 }
 
 h3{
@@ -42,49 +138,88 @@ h3{
     text-align: center; 
 }
 
-.agenda{
+#divBusca{
     display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-}
+    border-radius:10px;
+    margin: 3% 0 0 0;
+  }
+  
+  #txtBusca{
+    float:left;
+    background-color:white;
+    padding-left:5px;
+    font-style:italic;
+    font-size:18px;
+    height:30px;
+    border-radius: 10px;
+  }
 
 section#dados{
     display: flex;
-    flex-flow: wrap row;
+    flex-flow: column wrap;
     justify-content: center;
-    flex-wrap: wrap;
-    width:80%;
-    min-height: 50px;
-    font-size: 30px;
-    color: rgb(226, 83, 107);
+    align-items: center;
+    height: 450px;
+    width:250px;
+    font-size: 20px;
     background-color: rgb(248, 172, 185);
-    margin: 1% 5% ;
-    border-radius: 35px;
+    margin: 8px 0 0 0;
+    border-radius: 10px;
     padding: 15px;
 }#dadosUser{
     display: flex;
     flex-flow: wrap row;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     width:450px;
     min-height: 50px;
-    font-size: 30px;
-    color: rgb(226, 83, 107);
-    background-color: rgb(248, 172, 185);
+    font-size: 25px;
     margin-bottom: 20px;
-    border-radius: 35px;
+    border-radius: 10px;
+    padding: 15px;
+}#dadosAdmin{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    width: 100%;
+    font-size: 20px;
+    background-color: rgb(248, 172, 185);
+    margin: 8px 0 0 0;
+    border-radius: 10px;
+    padding: 15px;
+}#dadosServico{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    height: 450px;
+    max-width:95%;
+    font-size: 20px;
+    background-color: rgb(248, 172, 185);
+    margin: 8px 0 0 0;
+    border-radius: 10px;
+    padding: 15px;
+}#dadosAgenda{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    width:95%;
+    font-size: 25px;
+    background-color: rgb(248, 172, 185);
+    margin: 8px 0 0 0;
+    border-radius: 10px;
     padding: 15px;
 }#data{
     display: flex;
     flex-direction: row;
-    color: rgb(226, 83, 107);
     width: 300px;
     height: 50px;
 }#add{
     background-color: rgb(248, 172, 185);
     width:400px;
-    margin-left: 35px;
-    margin-bottom: 20px;
-    border-radius: 35px;
+    margin: 20px 0 20px 0;
+    border-radius: 10px;
     padding: 15px;
     font-size: 25px;
 }#manipulacao{
@@ -98,13 +233,81 @@ section#dados{
 }#login{
     display: flex;
     flex-direction: column;
+    border-radius: 10px;
+    background-color: rgb(226, 83, 107); 
     padding: 50px;
+}#sucesso{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    font-size: 25px;
+    max-width: 20%;
+    margin: 1% 1% 0 0;
+    border-radius: 10px;
+    color: black(226, 83, 107);
+    background-color: rgb(248, 172, 185);
+    padding: 1% 1% 1% 1%;
+}#infos{
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+    align-items: center;
+}#info{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    font-size: 25px;    
+    width: 350px;
+    height: 600px;
+    margin: 1% 1% 0 0;
+    border-radius: 10px;
+    color: black(226, 83, 107);
+    background-color: rgb(248, 172, 185);
+    padding: 1% 1% 1% 1%;
+}#logo{
+    display: flex;
+    height: 130px;
+}.sucesso{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}#footerImg{
+    height: 100%;
+}#footerNav{
+    display: flex;
+    flex-flow: column wrap;
+    padding:0 0 0 10px;
+    margin: 1% 0 0 1%;
+}#end{
+    display: flex;
+    flex-flow: column wrap;
+    margin: 1% 0 0 15%;
+}#contato{
+    display: flex;
+    flex-flow: row wrap;
+    width: 15%;
+    margin: 1% 0 0 20%;
+}#btnBusca{
+    width: 30px;
+}
+
+p{
+    display: flex;
+    width: 100%;
+    margin-left: 10px;
 }
 
 span{
-    margin: 8px;
-    font-size: 20px;
+    max-width: 450px;
+    overflow-wrap: break-word;
+    font-size: 30px;
     color: black;
+}.btn{
+    font-size: xx-large;
+    color: white;
+    padding: 10px;
 }
 
 label{
@@ -115,10 +318,6 @@ label{
 
 article{
     margin: 10px 10px 30px 10px 
-}
-
-p{
-    margin-left: 10px;
 }
 
 input#dia{
@@ -135,7 +334,62 @@ input#dia{
 }#descricao{
     height: 150px;
 }#username{
+    width: 150px;
+    height: 20px;
     margin: 5px;
+    padding: 2px;
 }#password{
+    width: 150px;
+    height: 20px;
+    padding: 2px;
     margin: 5px;
+}
+
+.img{
+    border-radius: 10px;
+    padding: 0 0 1% 0;
+    width: 100%;
+    height: 100%
+}#logoImg{
+    border-radius: unset;
+    min-width: 100%;
+    min-height: 100%;
+}#contatoImg{
+    width: 20px;
+    height: 20px;
+}
+
+footer{
+    display: flex;
+    flex-flow: row wrap;
+    margin: 3% 0 0 0;
+    background-color: rgb(226, 83, 107);
+    width: 100%;
+    height: 250px;
+}
+
+#detalhesAgenda{
+    display: flex;
+    flex-flow: row ;
+    background-color: rgb(248, 172, 185);
+}
+
+@media screen and (max-width: 480px){
+
+}
+
+@media (min-width: 481px) and (max-width: 768px){
+    
+}
+
+@media (min-width: 769px) and (max-width: 1024px){
+    
+}
+
+@media (min-width: 1025px) and (max-width: 1200px){
+    
+}
+
+@media (min-width: 1201px){
+    
 }

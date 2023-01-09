@@ -9,24 +9,55 @@
         <title>Espaço Lisa Ribeiro</title>
     </head>
     <body>
-        <a href="agenda/add"><button>Novo Agendamento</button></a>
-        <header></header>
-        <section id="login">
-        <h1><%= title %></h1>
-
+      <header> 
+        <section id="logo">
+            <img id="logoImg" src="../../public/images/Lisa.png" class="img">
+        </section>
+        <nav>
+        <a href="/cliente/agenda/add"><button class="agendamento"><span class="btn">Novo Agendamento</span></button></a>
+        <a href="/cliente/agenda"><button class="agendamento"><span class="btn">Agenda</span></button></a>    
+    </nav>
+    </header>
+    <main>
+      <h1><%= title %></h1>
+      <section id="login">
         <form action="/login" method="POST">
           <input name="username" id="username" type="text" placeholder="Nome"/><br />
           <input name="password" id="password" type="password" placeholder="Senha"/><br />
-          <button type="submit">Login</button>
+          <button class="submit">Login</button>
         </form>
         <% if(message) { %>
           <p>
             <label style="color:Red"><%= message %></label>
           </p>
         <%}%>
-        <p>
-          <!-- <a href="/users/forgot">Esqueceu sua senha?</a> -->
-        </p>
-    </section>
-      </body>
+          
+      </section>
+    </main>
+    <footer>
+      <section id="footerImg">
+      <img id="footer" src="../../public/images/Lisa.png" class="img">
+      </section>
+      <section id="footerNav">
+          <a href="/admin">Login</a>
+          <a href="/cliente">Sobre nós</a>
+          <a href="/cliente/agenda">Agenda</a>
+          <a href="/cliente/agenda/add">Agendamento</a>
+      </section>
+      <section id="end">
+          <h4>Endereço</h4>
+          <p>Rua Umbuzeiro, 54</p>
+          <p>Alto Floresta</p>
+          <p>Montes Claros - MG</p>
+      </section>
+      <section id="contato">
+          <h4>Contato</h4>
+          <p><img src="../../public/images/chamada-telefonica.png" id="contatoImg">(38) 98411-3383</p>
+          <p><img src="../../public/images/whatsapp.png" id="contatoImg">(38) 98411-3383</p>
+          <p><img src="../../public/images/telefone-tipico-antigo.png" id="contatoImg">(38) 3213-2469</p>
+          <p><img src="../../public/images/marketing-de-email.png" id="contatoImg">hudson.o.pereira@gmail.com</p>
+          <p><img src="../../public/images/instagram.png" id="contatoImg">/lisaribeiro44/</p>
+      </section>
+  </footer>  
+  </body>
 </html>

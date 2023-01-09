@@ -6,7 +6,7 @@ const prisma = new PrismaClient()
 
 router.get('/', (req, res) => {
     try { 
-        res.status(200).json({message: 'oi'})
+        res.status(200).render('./clientes/sobre')
     } catch (err) {
         console.error(`Rota /sobre: ${err.message}`);
       throw new Error("Erro!!!!");
@@ -39,12 +39,20 @@ router.post('/add', async (req, res) => {
         let { nome, data, hora, preco, procedimento } = req.body
         if (!preco) preco = 0;
         preco = parseFloat(preco)
-        
-        await prisma.agenda.create({
-            data: {
-                nome, data, hora, preco, procedimento
-            },
+
+        const agenda = await prisma.agenda.findMany({
+            where: {
+                data: data,
+                hora: hora
+            }
         })
+        console.log(agenda)//colocar validacao de hora
+        
+        // await prisma.agenda.create({
+        //     data: {
+        //         nome, data, hora, preco, procedimento
+        //     },
+        // })
         res.status(200).redirect('/cliente/agenda')
     } catch (err) {
         console.error(`Rota /cliente/add: ${err.message}`);
@@ -54,10 +62,24 @@ router.post('/add', async (req, res) => {
 
 router.get('/infos', (req, res) => {
     try { 
-        res.status(200).json({message: 'oi'})
+        res.status(200).render('./clientes/infos')
     } catch (err) {
         console.error(`Rota /infos: ${err.message}`);
       throw new Error("Erro!!!!");
+    }
+})
+
+router.post('/search', async (req, res) => {
+    try {
+        let {search} = req.body
+        console.log("🚀 ~ file: clientes.routes.js:67 ~ router.get ~ search", search)
+
+        const agenda = await prisma.agenda.findMany({ where: { data: search  } })
+        console.log("🚀 ~ file: clientes.routes.js:68 ~ router.get ~ agenda", agenda)
+        res.status(200).render('./clientes/agenda', {agenda: agenda})
+    } catch (err) {
+        console.error(`Rota post /search ${err.message}`)
+        res.status(200).redirect('/agenda')
     }
 })
 
