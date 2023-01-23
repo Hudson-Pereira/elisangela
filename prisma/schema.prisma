@@ -21,6 +21,7 @@ model Produtos {
 
 model Servicos {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  imagem    String
   nome      String   @unique
   valor     Float
   produtos  Produtos @relation(fields: [produto], references: [nome])

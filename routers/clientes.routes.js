@@ -4,7 +4,7 @@ const router = express.Router();
 const {PrismaClient} = require('@prisma/client');
 const prisma = new PrismaClient()
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
     try { 
         res.status(200).render('./clientes/sobre')
     } catch (err) {
@@ -60,9 +60,13 @@ router.post('/add', async (req, res) => {
     }
 })
 
-router.get('/infos', (req, res) => {
+router.get('/infos', async (req, res) => {
     try { 
-        res.status(200).render('./clientes/infos')
+        const servicos = await prisma.servicos.findMany({})
+
+        res.status(200).render('./clientes/infos', {
+            servicos: servicos
+        })
     } catch (err) {
         console.error(`Rota /infos: ${err.message}`);
       throw new Error("Erro!!!!");

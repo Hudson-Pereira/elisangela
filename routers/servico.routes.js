@@ -25,11 +25,12 @@ router.get("/add", async (req, res) => {
 
 router.post("/add", async (req, res) => {
     try {
-        let { nome, valor, produto, descricao } = req.body
+        let { nome, valor, produto, descricao, imagem } = req.body
         valor = parseFloat(valor)
+        if(!valor) valor = 0
         await prisma.servicos.create({
             data: {
-                nome, valor, produto, descricao
+                nome, valor, produto, descricao, imagem
             },
         })
         res.status(200).redirect('/servicos')

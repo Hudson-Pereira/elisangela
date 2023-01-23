@@ -24,34 +24,37 @@
     </header>
     <main>
         <h1>Conheça nossos serviços</h1>
-
+        
         <section id="infos">
+            <% if(servicos){ %> 
             <section id="info">
+                <% servicos.forEach(item => { %> 
+                
+                        <h3><%= item.nome %></h3>
+                        <img src="<%= item.imagem %>" class="img"> 
+                        <p><%= item.descricao %></p>
+                    
+                
+                <% }); %> 
+            </section>
+            <% }; %>
+            <!-- <section id="info">
                 <h3>Microagulhamento Capilar</h3>
             <img src="../../public/images/micro.jpg" class="img">
             <p>O microagulhamento capilar é um tipo de tratamento dermatológico de estética capilar que atrai muitas pessoas para as clínicas de estética. 
                 A técnica, que também é conhecida como agulhamento de pele, atua aumentando a produção de colágeno na cabeça, amenizando os efeitos do envelhecimento na região.</p> 
-            </section>
+            </section> -->
         
-            <section id="info">
-                <h3>Lorem ipsum</h3>
-            <img src="../../public/images/1antes.jpg" class="img">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc condimentum nec augue commodo suscipit. 
-                Suspendisse potenti. Vestibulum tempor arcu nisl, sit amet interdum neque volutpat nec. Pellentesque mollis massa lectus, at feugiat ligula viverra non. 
+            <!-- <section id="info">
+                <h3>Liberação Miofascial</h3>
+            <img src="../../public/images/terceira.jpg" class="img">
+            <p>A Liberação Miofascial trabalha na liberação da fáscia, ou seja, tecido cognitivo que recobre a musculatura do corpo. Este tecido tensionado é liberado com instrumentos utilizados pelo fisioterapeuta que fazem com que o músculo aumente a amplitude, voltando a normalidade. A ventosa atua sobre os pontos gatilhos da dor.
             </section>
 
             <section id="info">
-                <h3>Lorem ipsum</h3>
-            <img src="../../public/images/1antes.jpg" class="img">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc condimentum nec augue commodo suscipit. 
-                Suspendisse potenti. Vestibulum tempor arcu nisl, sit amet interdum neque volutpat nec. Pellentesque mollis massa lectus, at feugiat ligula viverra non. 
-            </section>
-
-            <section id="info">
-                <h3>Lorem ipsum</h3>
-            <img src="../../public/images/1antes.jpg" class="img">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc condimentum nec augue commodo suscipit. 
-                    Suspendisse potenti. Vestibulum tempor arcu nisl, sit amet interdum neque volutpat nec. Pellentesque mollis massa lectus, at feugiat ligula viverra non. 
+                <h3>Pump Up</h3>
+            <img src="../../public/images/quarta.jpeg" class="img">
+            <p>Também conhecido como “técnica empina bumbum”, o Pump Up é um procedimento realizado para melhorar a aparência geral dos glúteos. O método utiliza ventosas que se adaptam ao corpo, e quando estão em contato com a pele, liberam uma pressão pulsada, estimulando a produção de colágeno e tornando a região mais firme.
             </section>
 
             <section id="info">
@@ -60,6 +63,13 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc condimentum nec augue commodo suscipit. 
                     Suspendisse potenti. Vestibulum tempor arcu nisl, sit amet interdum neque volutpat nec. Pellentesque mollis massa lectus, at feugiat ligula viverra non. 
             </section>
+
+            <section id="info">
+                <h3>Lorem ipsum</h3>
+            <img src="../../public/images/1antes.jpg" class="img">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc condimentum nec augue commodo suscipit. 
+                    Suspendisse potenti. Vestibulum tempor arcu nisl, sit amet interdum neque volutpat nec. Pellentesque mollis massa lectus, at feugiat ligula viverra non. 
+            </section> -->
         </section>
     </main>
 
@@ -84,7 +94,7 @@
         <section id="contato">
             <h4>Contato</h4>
             <p><img src="../../public/images/chamada-telefonica.png" id="contatoImg">(38) 98411-3383</p>
-            <p><img src="../../public/images/whatsapp.png" id="contatoImg">(38) 98411-3383</p>
+            <p><img src="../../public/images/whatsapp.png" id="contatoImg"><a href ="https://l.instagram.com/?u=http%3A%2F%2Fwa.me%2F5538992507250&e=AT0MfqxHwPHSI4qRR8BB6lgACYhkBbU-T5AlO_tzsojlW3pa8LuJjwNCpO5ZI92VbTXYs55CIhVMM4SRa7wW8TfVjwtoww_rdhmkpw">(38) 99250-7250</a></p>
             <p><img src="../../public/images/telefone-tipico-antigo.png" id="contatoImg">(38) 3213-2469</p>
             <p><img src="../../public/images/marketing-de-email.png" id="contatoImg">hudson.o.pereira@gmail.com</p>
             <p><img src="../../public/images/instagram.png" id="contatoImg">/lisaribeiro44/</p>
