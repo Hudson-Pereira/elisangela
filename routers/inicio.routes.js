@@ -9,7 +9,8 @@ router.get("/", async (req, res) => {
     try {
       let hoje = new Date();
       const dia = hoje.getDate().toString().padStart(2,"0");
-      const mes = hoje.getMonth() + 1;
+      let mes = hoje.getMonth() + 1
+      if(mes.length !== 2) mes = `0${mes}`
       const ano = hoje.getFullYear();
   
       hoje = `${ano}-${mes}-${dia}`;
@@ -25,14 +26,12 @@ router.get("/", async (req, res) => {
           const mesA = parseInt(hojeS.slice(5, 8));
           const anoP = parseInt(produto.data.slice(0, 4).toString())
           const anoA = parseInt(hojeS.slice(0, 4));
-          if (anoP > anoA) {
-            if (mesP <= 2) {
+          if (anoP >= anoA) {
+            if (mesP <= mesA + 2) {
               return produto
             }
           }
-          if (mesP >= mesA && mesP <= mesA + 2) {
-            return produto;
-          }
+          
 
         }
       });

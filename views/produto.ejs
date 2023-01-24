@@ -43,12 +43,12 @@
                         Vendedor:<span><%= item.vendedor%></span>
                         Data de validade:<span><%= item.data %></span>
                         Estoque:<span><%= item.estoque %></span>
-                            <section id="mani">
-                                <a href="produto/alterar/<%= item.id%>"><button class="submit">Alterar</button></a>
-                                <a href="produto/deletar/<%= item.id%>"><button class="submit">Deletar</button></a>
-                            </section>
+                            
                     </section>
-                    
+                    <section id="mani">
+                        <a href="produto/alterar/<%= item.id%>"><button>Alterar</button></a>
+                        <a href="produto/deletar/<%= item.id%>"><button>Deletar</button></a>
+                    </section>
                 </ul>
                 
                 <% }); %> 

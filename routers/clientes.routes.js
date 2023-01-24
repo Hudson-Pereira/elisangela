@@ -40,19 +40,19 @@ router.post('/add', async (req, res) => {
         if (!preco) preco = 0;
         preco = parseFloat(preco)
 
-        const agenda = await prisma.agenda.findMany({
-            where: {
-                data: data,
-                hora: hora
-            }
-        })
-        console.log(agenda)//colocar validacao de hora
-        
-        // await prisma.agenda.create({
-        //     data: {
-        //         nome, data, hora, preco, procedimento
-        //     },
+        // const agenda = await prisma.agenda.findMany({
+        //     where: {
+        //         data: data,
+        //         hora: hora
+        //     }
         // })
+        // console.log(agenda)//colocar validacao de hora
+        
+        await prisma.agenda.create({
+            data: {
+                nome, data, hora, preco, procedimento
+            },
+        })
         res.status(200).redirect('/cliente/agenda')
     } catch (err) {
         console.error(`Rota /cliente/add: ${err.message}`);
