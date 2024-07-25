@@ -46,6 +46,7 @@ main{
 }#servicoMain {
     flex-flow: row wrap;
     justify-content: space-around;
+    max-width: none;
 }.agenda{
     flex-flow: row wrap;
     justify-content: center;
@@ -189,10 +190,10 @@ section#dados{
     padding: 15px;
 }#dadosServico{
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column;
     justify-content: center;
     align-items: center;
-    height: 450px;
+    height: auto;
     max-width:95%;
     font-size: 20px;
     background-color: rgb(248, 172, 185);
@@ -255,13 +256,13 @@ section#dados{
     align-items: center;
 }#info{
     display: flex;
-    justify-content: space-between;
-    flex-direction: column;
+    justify-content: center;
+    flex-flow:column wrap;
     align-items: center;
     font-size: 25px;    
-    width: 350px;
-    height: 600px;
-    margin: 1% 1% 0 0;
+    width: 90%;
+    /* height: 600px; */
+    margin: 1% 1% 0 5%;
     border-radius: 10px;
     color: black(226, 83, 107);
     background-color: rgb(248, 172, 185);

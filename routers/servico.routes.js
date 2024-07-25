@@ -59,6 +59,7 @@ router.post("/alterar/:id", async (req, res) => {
             data: {
                 nome: req.body.nome,
                 descricao: req.body.descricao,
+                imagem: req.body.imagem,
                 valor: parseFloat(req.body.valor),
                 produto: req.body.produto
             }
