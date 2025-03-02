@@ -35,15 +35,18 @@ router.get("/agenda/add", async (req, res) => {
 
 router.post("/add", async (req, res) => {
     try {
+
         let { nome, data, hora, preco, procedimento } = req.body
+
         if (!preco) preco = 0;
         preco = parseFloat(preco)
-        
+
         await prisma.agenda.create({
             data: {
                 nome, data, hora, preco, procedimento
             },
         })
+        //TODO:validar dados vazios
         res.status(200).redirect('/agenda')
     } catch(err) {
         console.error(`Rota post /agenda/add: ${err.message}`)

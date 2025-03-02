@@ -9,19 +9,7 @@
     <title>Espaço Lisa Ribeiro</title>
 </head>
 <body>
-    <header> 
-        <section id="logo">
-            <a href="/cliente">
-            <img id="logoImg" src="../../public/images/Lisa.png" class="img">
-            </a>
-        </section>
-        <nav>
-        <a href="/cliente/agenda/add"><button class="agendamento"><span class="btn">Novo Agendamento</span></button></a>
-        <a href="/cliente/agenda"><button class="agendamento"><span class="btn">Agenda</span></button></a> 
-        <a href="/cliente"><button class="agendamento"><span class="btn">Sobre nós</span></button></a>    
-
-    </nav>
-    </header>
+    <%- include('../includes/clientHeader'); %>
     <main>
         <h1>Conheça nossos serviços</h1>
         
@@ -73,33 +61,7 @@
         </section>
     </main>
 
-    <footer>
-        <section id="footerImg">
-        <img id="footer" src="../../public/images/Lisa.png" class="img">
-        </section>
-        <section id="footerNav">
-            <a href="/admin">Login</a>
-            <a href="/cliente">Sobre nós</a>
-            <a href="/cliente/agenda">Agenda</a>
-            <a href="/cliente/agenda/add">Agendamento</a>
-            <a href="/cliente/infos">Serviços</a>    
-
-        </section>
-        <!-- <section id="end">
-            <h4>Endereço</h4>
-            <p>Rua Umbuzeiro, 54</p>
-            <p>Alto Floresta</p>
-            <p>Montes Claros - MG</p>
-        </section> -->
-        <!-- <section id="contato">
-            <h4>Contato</h4>
-            <p><img src="../../public/images/chamada-telefonica.png" id="contatoImg">(38) 98411-3383</p>
-            <p><img src="../../public/images/whatsapp.png" id="contatoImg"><a href ="https://l.instagram.com/?u=http%3A%2F%2Fwa.me%2F5538992507250&e=AT0MfqxHwPHSI4qRR8BB6lgACYhkBbU-T5AlO_tzsojlW3pa8LuJjwNCpO5ZI92VbTXYs55CIhVMM4SRa7wW8TfVjwtoww_rdhmkpw">(38) 99250-7250</a></p>
-            <p><img src="../../public/images/telefone-tipico-antigo.png" id="contatoImg">(38) 3213-2469</p>
-            <p><img src="../../public/images/marketing-de-email.png" id="contatoImg">hudson.o.pereira@gmail.com</p>
-            <p><img src="../../public/images/instagram.png" id="contatoImg">/lisaribeiro44/</p>
-        </section> -->
-    </footer>
+    <%- include('../includes/clientFooter'); %>
     
 </body>
 </html>

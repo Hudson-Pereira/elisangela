@@ -8,6 +8,7 @@ a{
 body{
     display: flex;
     flex-direction: column;
+    align-items: center;
     background: rgb(255, 255, 255) /*url("../images/Lisa-remove.png") repeat-y center 50px*/;
     background-size: 50%;
 
@@ -21,6 +22,8 @@ header{
     justify-content: space-around;
     background-color: rgb(226, 83, 107);
     height: 100%;
+    width: 100%;
+        padding: 0px 0 5px 0;
 }
 
 nav{
@@ -141,6 +144,7 @@ h3{
 
 #divBusca{
     display: flex;
+    align-items: center;
     border-radius:10px;
     margin: 3% 0 0 0;
   }
@@ -279,7 +283,7 @@ section#dados{
 }#footerNav{
     display: flex;
     flex-flow: column wrap;
-    padding:0 0 0 10px;
+    padding: 0 0 0 5px;
     margin: 1% 0 0 1%;
 }#end{
     display: flex;
@@ -348,13 +352,13 @@ input#dia{
 
 .img{
     border-radius: 10px;
-    padding: 0 0 1% 0;
+    padding: 3% 0 0 0;
     max-width: 90%;
     height: 100%
 }#logoImg{
     border-radius: unset;
-    min-width: 100%;
-    min-height: 100%;
+    min-width: 90%;
+        min-height: 90%;
 }#contatoImg{
     width: 20px;
     height: 20px;
@@ -366,7 +370,8 @@ footer{
     margin: 3% 0 0 0;
     background-color: rgb(226, 83, 107);
     width: 100%;
-    height: 250px;
+    padding: 0 0 1% 0;
+        /* height: 250px; */
 }
 
 #detalhesAgenda{

@@ -46,14 +46,14 @@ router.post('/add', async (req, res) => {
         //         hora: hora
         //     }
         // })
-        // console.log(agenda)//colocar validacao de hora
+        // console.log(agenda) TODO:colocar validacao de hora
         
         await prisma.agenda.create({
             data: {
                 nome, data, hora, preco, procedimento
             },
         })
-        res.status(200).redirect('/cliente/agenda')
+        res.status(200).redirect('/clientes/agenda')
     } catch (err) {
         console.error(`Rota /cliente/add: ${err.message}`);
       throw new Error("Erro!!!!");
@@ -76,10 +76,8 @@ router.get('/infos', async (req, res) => {
 router.post('/search', async (req, res) => {
     try {
         let {search} = req.body
-        console.log("🚀 ~ file: clientes.routes.js:67 ~ router.get ~ search", search)
 
         const agenda = await prisma.agenda.findMany({ where: { data: search  } })
-        console.log("🚀 ~ file: clientes.routes.js:68 ~ router.get ~ agenda", agenda)
         res.status(200).render('./clientes/agenda', {agenda: agenda})
     } catch (err) {
         console.error(`Rota post /search ${err.message}`)
