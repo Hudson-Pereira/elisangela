@@ -10,27 +10,8 @@
     <title>Espaço Lisa Ribeiro</title>
 </head>
 <body>
-    <header> 
-        <section id="logo">
-            <a href="/admin">
-            <img id="logoImg" src="../../public/images/Lisa.png" class="img">
-            </a>
-        </section>
-        <nav>
-            <ul class="menu"> <li><a href='#'>MENU</a>
-                <ul>
-                    <li><a href="produto">Produtos</a></li>
-                    <li><a href="produto/add">Novo Produto</a></li>
-                    <li><a href="servicos">Serviços</a></li>
-                    <li><a href="servicos/add">Novo Serviço</a></li>
-                    <li><a href="agenda">Agenda</a></li>
-                    <li><a href="agenda/add">Agendamento</a></li>
-                    <li><a href="caixa">Caixa</a></li>
-                </ul>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    <%- include('./includes/adminHeader'); %>
+
     <h1>Produtos</h1>
 
     <main id="produtoMain">
@@ -55,34 +36,7 @@
                 <% }); %> 
                 
     </main>
-    <footer>
-        <section id="footerImg">
-        <img id="footer" src="../../public/images/Lisa.png" class="img">
-        </section>
-        <section id="footerNav">
-            <a href="admin">Início</a>
-            <a href="produto">Produtos</a>
-            <a href="produto/add">Novo Produto</a>
-            <a href="servicos">Serviços</a>
-            <a href="servicos/add">Novo Serviço</a>
-            <a href="agenda">Agenda</a>
-            <a href="agenda/add">Agendamento</a>
-            <a href="caixa">Caixa</a>
-        </section>
-        <section id="end">
-            <h4>Endereço</h4>
-            <p>Rua Umbuzeiro, 54</p>
-            <p>Alto Floresta</p>
-            <p>Montes Claros - MG</p>
-        </section>
-        <section id="contato">
-            <h4>Contato</h4>
-            <p><img src="../../public/images/chamada-telefonica.png" id="contatoImg">(38) 98411-3383</p>
-            <p><img src="../../public/images/whatsapp.png" id="contatoImg"><a href ="https://l.instagram.com/?u=http%3A%2F%2Fwa.me%2F5538992507250&e=AT0MfqxHwPHSI4qRR8BB6lgACYhkBbU-T5AlO_tzsojlW3pa8LuJjwNCpO5ZI92VbTXYs55CIhVMM4SRa7wW8TfVjwtoww_rdhmkpw">(38) 99250-7250</a></p>
-            <p><img src="../../public/images/telefone-tipico-antigo.png" id="contatoImg">(38) 3213-2469</p>
-            <p><img src="../../public/images/marketing-de-email.png" id="contatoImg">hudson.o.pereira@gmail.com</p>
-            <p><img src="../../public/images/instagram.png" id="contatoImg">/lisaribeiro44/</p>
-        </section>
-    </footer>
+    <%- include('./includes/adminFooter'); %>
+
 </body>
 </html>
