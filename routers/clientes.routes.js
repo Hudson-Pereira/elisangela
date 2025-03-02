@@ -36,9 +36,15 @@ router.get('/agenda/add', async (req, res) => {
 
 router.post('/add', async (req, res) => {
     try {
+        
         let { nome, data, hora, preco, procedimento } = req.body
+
+        if(!nome || !data || !hora || !procedimento)
+            return res.status(200).redirect('./agenda');
+        
         if (!preco) preco = 0;
         preco = parseFloat(preco)
+        //TODO:validar dados duplicado
 
         // const agenda = await prisma.agenda.findMany({
         //     where: {
@@ -53,7 +59,7 @@ router.post('/add', async (req, res) => {
                 nome, data, hora, preco, procedimento
             },
         })
-        res.status(200).redirect('/clientes/agenda')
+        res.status(200).redirect('./agenda')
     } catch (err) {
         console.error(`Rota /cliente/add: ${err.message}`);
       throw new Error("Erro!!!!");

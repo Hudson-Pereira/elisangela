@@ -1,6 +1,6 @@
 const express = require("express");
 const session = require("express-session");
-const MemoryStore = require('memorystore')(session)
+const MemoryStore = require('memorystore')(session);
 const path = require("path");
 const { PrismaClient } = require("@prisma/client");
 

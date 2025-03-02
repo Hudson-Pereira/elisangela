@@ -24,33 +24,35 @@ router.get("/add", async (req, res) => {
     }
 })
 
-router.get("/agenda/add", async (req, res) => {
-    try {
-        res.status(200).render('addAgenda')
-    } catch (err) {
-        console.error(`Rota /agenda/add: ${err.message}`)
-        throw new Error("Erro!!!!")
-    }
-})
+// router.get("/agenda/add", async (req, res) => {
+//     try {
+//         res.status(200).render('addAgenda')
+//     } catch (err) {
+//         console.error(`Rota /agenda/add: ${err.message}`)
+//         throw new Error("Erro!!!!")
+//     }
+// })
 
 router.post("/add", async (req, res) => {
     try {
-
         let { nome, data, hora, preco, procedimento } = req.body
+
+        if(!nome || !data || !hora || !procedimento)
+            return res.status(200).redirect('/agenda');
 
         if (!preco) preco = 0;
         preco = parseFloat(preco)
-
+        
         await prisma.agenda.create({
             data: {
                 nome, data, hora, preco, procedimento
             },
         })
-        //TODO:validar dados vazios
+        //TODO:validar dados duplicados
         res.status(200).redirect('/agenda')
     } catch(err) {
         console.error(`Rota post /agenda/add: ${err.message}`)
-        res.status(200).redirect('/agenda')
+        res.status(200).redirect('agenda')
     }
 })
 
