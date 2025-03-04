@@ -38,7 +38,7 @@ function authenticationMiddleware(req, res, next) {
 
 app.get('/', (req, res) => {
     res.redirect('/cliente')
-});//depois de pronta a tela sobre, mudar para ela o redirect
+});//TODO: depois de pronta a tela sobre, mudar para ela o redirect
 
 const LoginRouter = require("./routers/login.routes");
 app.use("/login", LoginRouter);

@@ -98,5 +98,4 @@ router.post('/search', async (req, res) => {
         res.status(200).redirect('/agenda')
     }
 })
-//TODO: retornar data no formato certo
 module.exports = router

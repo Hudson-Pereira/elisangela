@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const moment = require('moment');
+
 
 const {PrismaClient} = require('@prisma/client');
 const prisma = new PrismaClient()
@@ -72,11 +74,12 @@ router.get('/alterar/:id', async (req, res) => {
 router.post("/alterar/:id", async (req, res) => {
     try {
         const { id } = req.params
+        
         await prisma.agenda.update({
             where: { id },
             data: {
                 nome: req.body.nome,
-                data: req.body.data,
+                data: moment(req.body.data).locale('pt-br').format('DD/MM/YYYY'),
                 hora: req.body.hora,
                 preco: parseFloat(req.body.preco)
             }
