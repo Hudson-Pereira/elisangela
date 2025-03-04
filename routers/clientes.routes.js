@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const moment = require('moment');
 
 const {PrismaClient} = require('@prisma/client');
 const prisma = new PrismaClient()
@@ -39,9 +40,11 @@ router.post('/add', async (req, res) => {
         
         let { nome, data, hora, preco, procedimento } = req.body
 
-        if(!nome || !data || !hora || !procedimento)
+        if(!nome || !data || !hora)
             return res.status(200).redirect('./agenda');
         
+        data = moment(data).locale('pt-br').format('DD/MM/YYYY');
+
         if (!preco) preco = 0;
         preco = parseFloat(preco)
         //TODO:validar dados duplicado
@@ -89,7 +92,6 @@ router.post('/search', async (req, res) => {
             return res.status(200).render('./clientes/agenda', {agenda: agenda})
         }
 
-        const agenda = await prisma.agenda.findMany({ where: { data: search  } })
         res.status(200).render('./clientes/agenda', {agenda: agenda})
     } catch (err) {
         console.error(`Rota post /search ${err.message}`)

@@ -37,8 +37,10 @@ router.post("/add", async (req, res) => {
     try {
         let { nome, data, hora, preco, procedimento } = req.body
 
-        if(!nome || !data || !hora || !procedimento)
+        if(!nome || !data || !hora)
             return res.status(200).redirect('/agenda');
+
+        data = moment(data).locale('pt-br').format('DD/MM/YYYY');
 
         if (!preco) preco = 0;
         preco = parseFloat(preco)
