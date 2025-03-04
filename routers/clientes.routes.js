@@ -83,6 +83,12 @@ router.post('/search', async (req, res) => {
     try {
         let {search} = req.body
 
+        if(!search){
+            const agenda = await prisma.agenda.findMany()
+
+            return res.status(200).render('./clientes/agenda', {agenda: agenda})
+        }
+
         const agenda = await prisma.agenda.findMany({ where: { data: search  } })
         res.status(200).render('./clientes/agenda', {agenda: agenda})
     } catch (err) {
@@ -90,5 +96,5 @@ router.post('/search', async (req, res) => {
         res.status(200).redirect('/agenda')
     }
 })
-
+//TODO: retornar data no formato certo
 module.exports = router

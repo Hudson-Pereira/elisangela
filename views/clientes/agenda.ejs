@@ -18,23 +18,20 @@
                 </form>
         </section>
     <h1>Agendamentos</h1>
-
     <main class="agenda">
-<!--TODO: colocar para retornar todo agendamento se pesquisar vazio -->
-        <section id="dadosAgenda">
-            <% agenda.forEach(item => { %> 
-                <ul id="detalhesAgenda">
-                    <section id="dadosAgenda">
+<% agenda.forEach(item=> { %>
+    <section id="dados">
+        <ul id="detalhes">
+            <section id="dadosAgenda">
                         NOME:<%= item.nome %>
                         DATA:<%= item.data %>
                         HORA:<%= item.hora %>
                     </section>
-                    
-                </ul>
-                
-                <% }); %> 
-        </section>     
-    </main>
+                    </ul>
+        </section>
+    <% }); %>
+</main>
+
     <%- include('../includes/clientFooter'); %>
 </body>
 </html>
