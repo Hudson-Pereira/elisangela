@@ -22,4 +22,9 @@
         <a href="/cliente"><button class="agendamento"><span class="btn">Sobre nós</span></button></a>
         <a href="/cliente/infos"><button class="agendamento"><span class="btn">Serviços</span></button></a>
     </nav>
+    <% if (message){ %>
+        <section id="message" name="message">
+            <%= message %>
+        </section>
+        <% } %>
 </header>

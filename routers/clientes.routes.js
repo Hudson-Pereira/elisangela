@@ -7,7 +7,7 @@ const prisma = new PrismaClient()
 
 router.get('/', async (req, res) => {
     try { 
-        res.status(200).render('./clientes/sobre')
+        res.status(200).render('clientes/sobre', {message:``})
     } catch (err) {
         console.error(`Rota /sobre: ${err.message}`);
       throw new Error("Erro!!!!");
@@ -17,8 +17,9 @@ router.get('/', async (req, res) => {
 router.get('/agenda', async (req, res) => {
     try { 
         const agenda = await prisma.agenda.findMany({})
-        res.status(200).render('./clientes/agenda', {
-            agenda: agenda
+        res.status(200).render('clientes/agenda', {
+            agenda: agenda,
+            message:``
         })
     } catch (err) {
         console.error(`Rota /cliente/agenda: ${err.message}`);
@@ -28,7 +29,7 @@ router.get('/agenda', async (req, res) => {
 
 router.get('/agenda/add', async (req, res) => {
     try {
-        res.status(200).render('./clientes/addAgenda')
+        res.status(200).render('clientes/addAgenda', {message:``})
     } catch (err) {
         console.error(`Rota /cliente/agenda/add: ${err.message}`);
       throw new Error("Erro!!!!");
@@ -41,28 +42,26 @@ router.post('/add', async (req, res) => {
         let { nome, data, hora, preco, procedimento } = req.body
 
         if(!nome || !data || !hora)
-            return res.status(200).redirect('./agenda');
+            return res.status(200).render('clientes/agenda', {message: `Campos vazios!!`});
         
         data = moment(data).locale('pt-br').format('DD/MM/YYYY');
 
+        const verifyIfExists = await prisma.agenda.findMany({where: {data: data, hora: hora}})
+
+        if (verifyIfExists){
+            return res.status(200).render('clientes/addAgenda', {message: `Horário não disponíve!!`});
+        }
+
         if (!preco) preco = 0;
         preco = parseFloat(preco)
-        //TODO:validar dados duplicado
-
-        // const agenda = await prisma.agenda.findMany({
-        //     where: {
-        //         data: data,
-        //         hora: hora
-        //     }
-        // })
-        // console.log(agenda) TODO:colocar validacao de hora
+        //TODO:editar mensagem de duplicidade
         
         await prisma.agenda.create({
             data: {
                 nome, data, hora, preco, procedimento
             },
         })
-        res.status(200).redirect('./agenda')
+        res.status(200).render('clientes/agenda', {message:``})
     } catch (err) {
         console.error(`Rota /cliente/add: ${err.message}`);
       throw new Error("Erro!!!!");
@@ -73,8 +72,9 @@ router.get('/infos', async (req, res) => {
     try { 
         const servicos = await prisma.servicos.findMany({})
 
-        res.status(200).render('./clientes/infos', {
-            servicos: servicos
+        res.status(200).render('clientes/infos', {
+            servicos: servicos,
+            message: ``
         })
     } catch (err) {
         console.error(`Rota /infos: ${err.message}`);
@@ -89,13 +89,13 @@ router.post('/search', async (req, res) => {
         if(!search){
             const agenda = await prisma.agenda.findMany()
 
-            return res.status(200).render('./clientes/agenda', {agenda: agenda})
+            return res.status(200).render('clientes/agenda', {agenda: agenda, message:``})
         }
 
-        res.status(200).render('./clientes/agenda', {agenda: agenda})
+        res.status(200).render('./clientes/agenda', {agenda: agenda, message: ``})
     } catch (err) {
         console.error(`Rota post /search ${err.message}`)
-        res.status(200).redirect('/agenda')
+        res.status(200).redirect('/agenda', {message:``})
     }
 })
 module.exports = router
