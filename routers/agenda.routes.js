@@ -40,9 +40,15 @@ router.post("/add", async (req, res) => {
         let { nome, data, hora, preco, procedimento } = req.body
 
         if(!nome || !data || !hora)
-            return res.status(200).redirect('/agenda');
+            return res.status(200).render('agenda');
 
         data = moment(data).locale('pt-br').format('DD/MM/YYYY');
+
+        const verifyIfExists = await prisma.agenda.findMany({where: {data: data, hora: hora}})
+
+        if (verifyIfExists.length !== 0){
+            return res.status(200).render('addAgenda', {message: `Horário não disponíve!!`});
+        }
 
         if (!preco) preco = 0;
         preco = parseFloat(preco)
@@ -52,8 +58,8 @@ router.post("/add", async (req, res) => {
                 nome, data, hora, preco, procedimento
             },
         })
-        //TODO:validar dados duplicados
-        res.status(200).redirect('/agenda')
+        //TODO:editar menssagem de duplicidade
+        res.status(200).render('agenda')
     } catch(err) {
         console.error(`Rota post /agenda/add: ${err.message}`)
         res.status(200).redirect('agenda')
@@ -85,7 +91,7 @@ router.post("/alterar/:id", async (req, res) => {
             }
         })
 
-        res.status(200).redirect('/agenda')
+        res.status(200).render('agenda')
     } catch(err) {
         console.error(`Rota post /agenda/alterar: ${err.message}`)
         res.status(200).redirect('/agenda')
@@ -101,7 +107,7 @@ router.get("/deletar/:id", async (req, res) => {
             }
         })
 
-        res.status(200).redirect('/agenda')
+        res.status(200).render('agenda')
     } catch (err) {
         console.error(`Rota /agenda/deletar ${err.message}`)
         throw new Error("Erro!!!!")
