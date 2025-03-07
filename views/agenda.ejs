@@ -10,9 +10,17 @@
 </head>
 <body>
     <%- include('./includes/adminHeader'); %>
+    <section id="divBusca">
+        <form action="/cliente/search" method="POST">
+            <input type="date" id="txtBusca" name="search" placeholder="Buscar..." />
+            <button type="submit" id="search"><img src="../../public/images/icons8-pesquisar-sf-black-16.png" id="btnBusca"
+                    alt="Buscar" /></button>
+        </form>
+    </section>
+    
+    <h1>Agendamentos</h1>
 
     <main class="agendaAdmin">
-            <h1>Agenda</h1>
 
             <% agenda.forEach(item => { %> 
                 <ul id="detalhes">

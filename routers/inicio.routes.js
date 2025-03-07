@@ -31,12 +31,10 @@ router.get("/", async (req, res) => {
               return produto
             }
           }
-          
-
         }
       });
   
-      res.status(200).render("inicio", { agendas: agendas, produtos: produtos });
+      res.status(200).render("inicio", { agendas: agendas, produtos: produtos, message: `` });
     } catch (err) {
       console.error(`Rota /: ${err.message}`);
       throw new Error("Erro!!!!");

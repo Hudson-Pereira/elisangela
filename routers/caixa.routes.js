@@ -6,7 +6,7 @@ const prisma = new PrismaClient()
 
 router.get("/", async (req, res) => {
     try {
-        res.status(200).render('fechamento')
+        res.status(200).render('fechamento', {message:``})
      } catch (err) {
         console.error(`Rota caixa: ${err.message}`)
         res.redirect('caixa')
@@ -35,7 +35,6 @@ router.post("/", async (req, res) => {
         
         produtos.filter((produto) => {
             
-            
             if (produto.createdAt >= dataI || produto.createAt <= dataF) {
                 saida = saida + produto.valor
             }
@@ -45,7 +44,8 @@ router.post("/", async (req, res) => {
             dataI: req.body.dataI,
             dataF: req.body.dataF,
             entrada: entrada,
-            saida: saida
+            saida: saida,
+            message:``
         })
         
     } catch (err) {
@@ -54,3 +54,4 @@ router.post("/", async (req, res) => {
 })
 
 module.exports = router
+//TODO: melhorar??

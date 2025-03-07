@@ -20,4 +20,8 @@
         </ul>
     </nav>
 </header>
-<!--TODO: adicionar messagem -->
+<% if(message){ %>
+    <section id="message" name="message">
+        <%= message %>
+    </section>
+    <% }%>
