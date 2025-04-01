@@ -17,7 +17,8 @@ router.get('/', async (req, res) => {
 
 router.get('/agenda', async (req, res) => {
     try { 
-        const agenda = await prisma.agenda.findMany({})
+        const agenda = await prisma.agenda.findMany({orderBy:[{data: 'asc'}, {hora: 'asc'}]})
+        
         res.status(200).render('clientes/agenda', {
             agenda: agenda,
             message:``
@@ -61,7 +62,10 @@ router.post('/agenda/add', async (req, res) => {
                 nome, data, hora, preco, procedimento
             },
         })
-        res.status(200).render('clientes/addAgenda', {message: `Agendamento concluido!!`})
+
+        const agenda = await prisma.agenda.findMany({orderBy:[{data: 'asc'}, {hora: 'asc'}]})
+
+        res.status(200).render('clientes/agenda', {agenda: agenda, message: `Agendamento concluido!!`})
     } catch (err) {
         console.error(`Rota /cliente/add: ${err.message}`);
       throw new Error("Erro!!!!");
@@ -87,14 +91,14 @@ router.post('/search', async (req, res) => {
         let {search} = req.body
 
         if(!search){
-            const agenda = await prisma.agenda.findMany()
+            const agenda = await prisma.agenda.findMany({orderBy: [{data: 'asc'}, {hora: 'asc'}]})
 
             return res.status(200).render('clientes/agenda', {agenda: agenda, message:``})
         }
 
         let date = moment(search).locale('pt-br').format('DD/MM/YYYY');
 
-        const agenda = await prisma.agenda.findMany({where:{data: date}})
+        const agenda = await prisma.agenda.findMany({where:{data: date}, orderBy:[{data: 'asc'}, {hora: 'asc'}]})
         
         res.status(200).render('clientes/agenda', {agenda: agenda, message: ``})
     } catch (err) {
