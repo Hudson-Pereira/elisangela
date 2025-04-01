@@ -8,6 +8,7 @@ const prisma = new PrismaClient()
 router.get('/', async (req, res) => {
     try { 
         res.status(200).render('clientes/sobre', {message:``})
+        // res.status(200).render(`clientes/home`, {message:``})
     } catch (err) {
         console.error(`Rota /sobre: ${err.message}`);
       throw new Error("Erro!!!!");

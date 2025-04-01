@@ -1,401 +1,629 @@
-*{margin: 0; padding: 0;}
-/* TODO: personalizar mensagem e todo o sistema */
-a{
-    text-decoration: none;
-    color: black
+/* Estilos gerais */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
+    line-height: 1.6;
 }
 
-body{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: rgb(255, 255, 255) /*url("../images/Lisa-remove.png") repeat-y center 50px*/;
-    background-size: 50%;
-
-}#inicio{
-    background: rgb(255, 255, 255) /*url("../images/Lisa-remove.png") no-repeat center 50px*/; 
-    background-size: 40%;
+main {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
 }
 
-header{
-    display: flex;
-    justify-content: space-around;
-    background-color: rgb(226, 83, 107);
-    height: 21%;
-    width: 100%;
-        padding: 0px 0 5px 0;
-}
-
-nav{
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-}
-
-main{
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
-}#inicioMain{
-    flex-flow: row wrap;
-    justify-content: space-around;
-    min-height: 350px;
-    align-items: baseline;
-    margin: 3% 0 0 0;
-}#produtoMain{
-    flex-flow: row wrap;
-    justify-content: space-around;
-}#servicoMain {
-    flex-flow: row wrap;
-    justify-content: space-around;
-    max-width: none;
-}.agenda{
-    flex-flow: row wrap;
-    justify-content: center;
-}
-
-.menu{
-    list-style:none;
-    border:1px solid #c0c0c0;
-    float:left;
-}
-
-.menu li{
-    position:relative;
-    float:left;
-    border-right:1px solid #c0c0c0;
-}
-
-.menu li a{color:#333; text-decoration:none; padding:5px 10px; display:block;}
-
-.menu li a:hover{
-background:#333;
-color:#fff;
--moz-box-shadow:0 3px 10px 0 #CCC;
--webkit-box-shadow:0 3px 10px 0 #ccc;
-text-shadow:0px 0px 5px #fff;
-}
-
-.menu li  ul{
-    position:absolute;
-    top:25px;
-    left:0;
-    background-color:#fff;
-    display:none;
-}
-
-.menu li:hover ul, .menu li.over ul{display:block;}
-
-.menu li ul li{
-    border:1px solid #c0c0c0;
-    display:block;
-    width:150px;
-    }
-
-h1{
+h1 {
     text-align: center;
-    color: black(255, 255, 255);
-    margin: 5% 0 0 5%;
-}#msg{
-    display: flex;
-    justify-content: center;
+    color: #d87093;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    font-weight: 300;
 }
 
-button{
-    cursor: pointer;
-    border-radius: 10px;
-    font-size: 20px;
-    margin: 5px 3px 0 0; 
-}#salvar{
-    margin-left: 150px;
-}.manipular{
-    margin: 0 30px 0 10px 
-}#search{
-    height: 0;
-    width: 30px;
-    border: none
-}.agendamento{
-    border-width: 0;
-    background-clip: border-box;
-    border-radius: 10px;
-    background-color: black;
-}.submit{
-    border-width: 0;
-    background-clip: border-box;
-    border-radius: 10px;
-    background-color: black;
-    color: white;
-    padding: 5px;
-
-}
-
-
-h2{
-    color: rgb(226, 83, 107); 
-    display: flex;
-    justify-content: center;
-}
-
-h3{
-    color: rgb(226, 83, 107);
+/* Agenda */
+.agenda{
+    width: 90%; /* Largura da seção */
+    margin: 20px auto; /* Centraliza a seção */
+    font-family: Arial, sans-serif; /* Fonte padrão */
+    color: #333; /* Cor do texto padrão */
     text-align: center; 
 }
 
-#divBusca{
+.agenda h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #e91e63; /* Cor do título */
+}
+
+#dados {
+    display: inline-block; /* Exibe os cards lado a lado */
+    width: 15%; /* Largura dos cards (ajuste conforme necessário) */
+    margin: 10px; /* Espaço entre os cards */
+    padding: 15px;
+    background-color: #fffefe; /* Cor de fundo dos dados */
+    border: 1px solid #f8bbd0; /* Borda dos dados */
+    border-radius: 8px; /* Borda arredondada */
+    box-sizing: border-box; /* Garante que padding e border não alterem a largura */
+    vertical-align: top;
+}
+
+#detalhes {
+    list-style: none; /* Remove os marcadores de lista */
+    padding: 0;
+}
+
+/* #detalhes li {
+    margin-bottom: 10px; 
+} */
+
+#dadosAgenda div {
+    margin-bottom: 5px; /* Adiciona espaço entre as linhas */
+    font-size: 14px;
+    line-height: 1.4; /* Espaçamento entre as linhas */
+}
+
+#dadosAgenda strong {
+    font-weight: bold; /* Texto em negrito */
+}
+
+#dadosAgenda span {
+    color: #ad1457; /* Cor dos valores dos dados */
+}
+
+/* Seção de servicos */
+.servicos {
+    background-color: transparent;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    height: 100%;
+        box-sizing: border-box;
+}
+
+#servicos {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+#servicos:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+#servicos h3 {
+    color: #e91e63;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+#servicos img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    object-fit: cover;
+    max-height: 250px;
+}
+
+.img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    display: block;
+    transition: transform 0.3s ease;
+    max-height: 250px;
+    object-fit: cover;
+}
+
+.img:hover {
+    transform: scale(1.05);
+}
+
+/* Carrossel */
+.carousel {
+    overflow: hidden;
+    position: relative;
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+}
+
+.carousel-wrapper {
     display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+    width: fit-content;
+    margin: 0 15px;
+    box-sizing: border-box;
+    position: relative;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.8);
+    /* Cards com leve transparência */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    /* Sombra suave */
+    display: flex;
+    flex-direction: column;
+        align-items: center;
+        padding: 20px;
+}
+
+.carousel-item img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.carousel-item h3 {
+    text-align: center;
+    color: #d87093;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+    
+.carousel-nav button {
+    background: transparent;
+    border: none;
+    font-size: 2em;
+    color: #d87093;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+.carousel-nav button:hover {
+    color: #e691b0;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #fff;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    border-radius:10px;
-    margin: 3% 0 0 0;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+header #logo img {
+    height: 150px;
+    border-radius: 50%;
+}
+    
+header nav ul.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    left: -40px;
+}
+
+header nav ul.menu>li {
+    display: inline-block;
+}
+
+header nav ul.menu>li>a,
+header nav ul.menu ul li a {
+    text-decoration: none;
+    color: #e91e63;
+    padding: 12px 22px;
+    display: block;
+    transition: all 0.3s ease;
+    border-radius: 25px;
+    position: relative;
+    overflow: hidden;
+    font-size: 1em;
+}
+
+header nav ul.menu>li>a:hover,
+header nav ul.menu ul li a:hover {
+    background-color: rgba(233, 30, 99, 0.1);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px);
+}
+
+header nav ul.menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 1;
+    border-radius: 25px;
+}
+
+header nav ul.menu li:hover>ul {
+    display: block;
+}
+
+header nav ul.menu>li>a::before,
+header nav ul.menu ul li a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(233, 30, 99, 0.2), transparent);
+    transition: all 0.5s;
+}
+
+header nav ul.menu>li>a:hover::before,
+header nav ul.menu ul li a:hover::before {
+    left: 100%;
+}
+
+/* Rodapé */
+footer {
+    background-color: #f0f0f0;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+}
+
+footer #logo img {
+    height: 150px;
+    border-radius: 50%;
+}
+
+footer #footerNav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+footer #footerNav a {
+    text-decoration: none;
+    color: #e91e63;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+    font-size: 1em;
+}
+    
+footer #footerNav a:hover {
+    color: #ec407a;
+}       
+
+/* Mensagem */
+#message {
+    background-color: rgba(216, 112, 147, 0.8); /* Rosa delicado com transparência */
+    color: #fff; /* Texto branco para melhor contraste */
+    padding: 15px;
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 1em;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+ }
+
+ #message.hidden {
+    opacity: 0; /* Torna a mensagem invisível */
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(233, 30, 99, 0.1), rgba(236, 64, 122, 0.1));
+    z-index: -1;
+}
+
+/* Calendário */
+
+.calendario {
+    display: inline;
+    width: 300px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 20px auto;
   }
   
-  #txtBusca{
-    float:left;
-    background-color:white;
-    padding-left:5px;
-    font-style:italic;
-    font-size:18px;
-    height:30px;
-    border-radius: 10px;
+  .cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: transparent; /* Remove o fundo branco */
+  }
+  
+  .cabecalho button {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    color: #d87093;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .cabecalho button:hover {
+    color: #e691b0;
+  }
+  
+  #mes-ano {
+    font-size: 1.2em;
+    font-weight: 400;
+    color: #d87093;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto; /* Centraliza o texto */
+    text-align: center; /* Garante que o texto esteja centralizado */
+    width: 100%; /* Garante que o texto ocupe toda a largura do cabeçalho */
+  }
+  
+  #mes-ano::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(233, 30, 99, 0.2), transparent);
+    transition: all 0.5s;
+  }
+  
+  #mes-ano:hover::before {
+    left: 100%;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #eee;
+  }
+  
+  th {
+    background-color: #f0f0f0;
+    color: #d87093;
+    font-weight: 400;
+  }
+  
+  td {
+    cursor: pointer;
+  }
+  
+  td:hover {
+    background-color: #f5f5f5;
+  }
+  
+  td.mes-anterior,
+  td.mes-posterior {
+    color: #ccc;
+    opacity: 0.7;
   }
 
-section#dados{
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
-    height: 450px;
-    width:250px;
-    font-size: 20px;
-    background-color: rgb(248, 172, 185);
-    margin: 8px 0 0 0;
-    border-radius: 10px;
-    padding: 15px;
-}#dadosUser{
-    display: flex;
-    flex-flow: wrap row;
-    justify-content: space-between;
-    align-items: center;
-    width:450px;
-    min-height: 50px;
-    font-size: 25px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    padding: 15px;
-}#dadosAdmin{
-    display: flex;
-    flex-flow: column wrap;
-    align-items: center;
+/* Sobreposição */
+  .sobreposicao {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    font-size: 20px;
-    background-color: rgb(248, 172, 185);
-    margin: 8px 0 0 0;
-    border-radius: 10px;
-    padding: 15px;
-}#dadosServico{
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
-    height: auto;
-    max-width:95%;
-    font-size: 20px;
-    background-color: rgb(248, 172, 185);
-    margin: 8px 0 0 0;
-    border-radius: 10px;
-    padding: 15px;
-}#dadosAgenda{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: center;
-    width:95%;
-    font-size: 25px;
-    background-color: rgb(248, 172, 185);
-    margin: 8px 0 0 0;
-    border-radius: 10px;
-    padding: 15px;
-}#data{
-    display: flex;
-    flex-direction: row;
-    width: 300px;
-    height: 50px;
-}#add{
-    background-color: rgb(248, 172, 185);
-    width:400px;
-    margin: 20px 0 20px 0;
-    border-radius: 10px;
-    padding: 15px;
-    font-size: 25px;
-}#manipulacao{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}#msgs{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}#login{
-    display: flex;
-    flex-direction: column;
-    border-radius: 10px;
-    background-color: rgb(226, 83, 107); 
-    padding: 50px;
-}#sucesso{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    align-items: center;
-    font-size: 25px;
-    max-width: 20%;
-    margin: 1% 1% 0 0;
-    border-radius: 10px;
-    color: black(226, 83, 107);
-    background-color: rgb(248, 172, 185);
-    padding: 1% 1% 1% 1%;
-}#infos{
-    display: flex;
-    justify-content: space-between;
-    flex-flow: row wrap;
-    align-items: center;
-}#info{
-    display: flex;
-    justify-content: center;
-    flex-flow:column wrap;
-    align-items: center;
-    font-size: 25px;    
-    width: 90%;
-    /* height: 600px; */
-    margin: 1% 1% 0 5%;
-    border-radius: 10px;
-    color: black(226, 83, 107);
-    background-color: rgb(248, 172, 185);
-    padding: 1% 1% 1% 1%;
-}#logo{
-    display: flex;
-    height: 130px;
-}.sucesso{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-}#footerImg{
     height: 100%;
-}#footerNav{
-    display: flex;
-    flex-flow: column wrap;
-    padding: 0 0 0 5px;
-    margin: 1% 0 0 1%;
-}#end{
-    display: flex;
-    flex-flow: column wrap;
-    margin: 1% 0 0 15%;
-}#contato{
-    display: flex;
-    flex-flow: row wrap;
-    width: 15%;
-    margin: 1% 0 0 20%;
-}#btnBusca{
-    width: 30px;
+    background-color: rgba(0,0,0, 0.5); /* Rosa semi-transparente */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
 
-p{
-    display: flex;
-    width: 100%;
-    margin-left: 10px;
+.conteudo-sobreposicao {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    width: 60%;
+    max-width: 500px;
+    /* max-height: 80vh; */
+    position: relative;
+    font-family: 'Segoe UI', sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* overflow-y: auto; */
 }
 
-span{
-    max-width: 450px;
-    overflow-wrap: break-word;
-    font-size: 30px;
-    color: black;
-}.btn{
-    font-size: larger;
-    color: white;
+.conteudo-sobreposicao h2 {
+    color: #d87093;
+    font-size: 1.5em;
+    font-weight: 400;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#agendamentos-do-dia {
+    display: flex; /* Exibe os cards em linha */
+    flex-wrap: wrap; /* Permite que os cards quebrem para a próxima linha */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#agendamentos-do-dia .card {
+    width: 20%; /* Cada card ocupa 20% da largura */
+    box-sizing: border-box; /* Garante que padding e bordas não alterem a largura */
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 0 10px 15px 0; /* Adiciona margem à direita e inferior */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+#agendamentos-do-dia .card:hover {
+    transform: scale(1.05); /* Aumenta o card em 5% no hover */
+}
+
+/* #agendamentos-do-dia .card-coluna {
+    flex: 1; 
+} */
+
+#agendamentos-do-dia .card:nth-child(5n) {
+    margin-right: 0; /* Remove a margem direita do 5º card em cada linha */
+}
+
+#agendamentos-do-dia .card:last-child {
+    margin-bottom: 0;
+}
+
+#agendamentos-do-dia .card p {
+    font-size: 8px;
+    margin: 5px 0;
+}
+
+.fechar-sobreposicao {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #d87093;
+    background: none;
+    border: none;
+}  
+
+#divBusca {
+    display: flex;
+    align-items: center;
+    margin: 20px auto; /* Centraliza horizontalmente e adiciona margem */
+    max-width: 400px; /* Define uma largura máxima */
+}
+
+#txtBusca {
     padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    flex-grow: 1; /* Permite que o input cresça */
+    margin-right: 10px; /* Adiciona espaço entre o input e o botão */
 }
 
-label{
-    color: rgb(226, 83, 107);
-}#data{
-    height: 30px;
+#search {
+    padding: 10px 15px;
+    background-color: #d87093;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-article{
-    margin: 10px 10px 30px 10px 
+#search:hover {
+    background-color: #e91e63;
+
 }
 
-input#dia{
-    margin-top: 18px;
-    width: 50px
-}#mes{
-    margin-top: 18px;
-    width: 50px
-}#ano{
-    margin-top: 18px;
-    width: 50px
-}#estoque{
-    width: 90px
-}#descricao{
-    height: 150px;
-}#username{
-    width: 150px;
-    height: 20px;
-    margin: 5px;
-    padding: 2px;
-}#password{
-    width: 150px;
-    height: 20px;
-    padding: 2px;
-    margin: 5px;
+#btnBusca {
+    width: 16px; /* Tamanho da imagem de busca */
+    height: 16px;
 }
 
-.img{
-    border-radius: 10px;
-    padding: 3% 0 0 0;
-    max-width: 90%;
-    height: 100%
-}#logoImg{
-    border-radius: unset;
-    min-width: 90%;
-        min-height: 90%;
-}#contatoImg{
-    width: 20px;
-    height: 20px;
-}
-
-footer{
+/* Estilos do formulário de agendamento */
+#add form {
     display: flex;
-    flex-flow: row wrap;
-    margin: 3% 0 0 0;
-    background-color: rgb(226, 83, 107);
-    width: 100%;
-    padding: 0 0 1% 0;
-        /* height: 250px; */
+    flex-direction: column;
 }
 
-#detalhesAgenda{
-    display: flex;
-    flex-flow: row ;
-    background-color: rgb(248, 172, 185);
+#add label {
+    margin-top: 10px;
+    font-weight: bold; /* Texto em negrito */
+    color: #333; /* Cor de texto escura */
 }
 
-@media screen and (max-width: 480px){
-
+#add input,
+#add textarea {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #333;
 }
 
-@media (min-width: 481px) and (max-width: 768px){
-    
+#add button {
+    padding: 12px 20px;
+    background-color: #d87093;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 16px;
+    transition: background-color 0.3s ease; /* Transição suave */
 }
 
-@media (min-width: 769px) and (max-width: 1024px){
-    
+#add button:hover {
+    background-color: #e91e63;
+}
+  
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+    main {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    .carousel {
+        width: 100%;
+        margin: 20px auto;
+    }
+
+    .carousel-item {
+        margin: 0 10px;
+        padding: 10px;
+    }
+
+    .carousel-item img {
+        width: 150px;
+        height: 100px;
+    }
+
+    .carousel-nav button {
+        font-size: 1.5em;
+    }
 }
 
-@media (min-width: 1025px) and (max-width: 1200px){
-    
-}
-
-@media (min-width: 1201px){
-    
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8em;
+    }
+    .carousel-item img {
+        width: 120px;
+        height: 80px;
+    }
 }

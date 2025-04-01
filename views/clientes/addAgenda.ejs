@@ -14,32 +14,60 @@
     <main>
         <h1>Adicionar Agendamento</h1>
 
-        <section id="add">
-            <form id="dados" action="add" method="POST">
-                <label for="nome"><p>NOME</p></label>
-                <article>
-                    <input type="text" id= "nome" name="nome" placeholder="Insira o nome">
-                </article>
-                <label for="data"><p>DATA</p></label>
-                <article>
-                    <input type="date" id= "data" name="data">
-                </article>
-                <label for="nome"><p>HORA</p></label>
-                <article>
-                    <input type="time" min="08:00" max="18:00" step="1800" id="hora" name="hora">
-                </article>
-                <label for="procedimento"><p>PROCEDIMENTO</p></label>
-                <article>
-                    <textarea id= "procedimento" name="procedimento" placeholder="Insira o procedimento a ser realizado"></textarea>
-                </article>
-                 <label for="preco"><p>VALOR</p></label>
-                <article>
-                    <input type="number" id= "preco" step="0.1" name="preco" placeholder="Insira o valor do servico">
-                </article>               
-
-             <button type="submit">Salvar</button>
-            </form>
-        </section>
+        <div id="calendario" class="calendario">
+            <div class="cabecalho">
+              <button id="anterior">&lt;</button>
+              <h2 id="mes-ano"></h2>
+              <button id="proximo">&gt;</button>
+            </div>
+            <table id="dias">
+              <thead>
+                <tr>
+                  <th>Dom</th>
+                  <th>Seg</th>
+                  <th>Ter</th>
+                  <th>Qua</th>
+                  <th>Qui</th>
+                  <th>Sex</th>
+                  <th>Sáb</th>
+                </tr>
+              </thead>
+              <tbody>
+                </tbody>
+            </table>
+          </div>
+    
+        <div id="sobreposicao" class="sobreposicao">
+            <div class="conteudo-sobreposicao">
+                <span class="fechar-sobreposicao">&times;</span>
+                <section id="add">
+                    <form id="form" action="add" method="POST">
+                        <label for="nome"><p>NOME</p></label>
+                        <article>
+                            <input type="text" id= "nome" name="nome" placeholder="Insira o nome">
+                        </article>
+                        <label for="data"><p>DATA</p></label>
+                        <article>
+                            <input type="date" id= "data" name="data">
+                        </article>
+                        <label for="nome"><p>HORA</p></label>
+                        <article>
+                            <input type="time" min="08:00" max="18:00" step="1800" id="hora" name="hora">
+                        </article>
+                        <label for="procedimento"><p>PROCEDIMENTO</p></label>
+                        <article>
+                            <textarea id= "procedimento" name="procedimento" placeholder="Insira o procedimento a ser realizado"></textarea>
+                        </article>
+                         <label for="preco"><p>VALOR</p></label>
+                        <article>
+                            <input type="number" id= "preco" step="0.1" name="preco" placeholder="Insira o valor do servico">
+                        </article>               
+        
+                     <button type="submit">Salvar</button>
+                    </form>
+                </section>
+            </div>
+        </div>
         
     </main>
     <%- include('../includes/clientFooter'); %>

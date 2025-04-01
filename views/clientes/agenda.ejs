@@ -1,37 +1,28 @@
-<!-- <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/style.css">
 
-    <title>Espaço Lisa Ribeiro</title>
-</head> -->
 <body>
     <%- include('../includes/clientHeader'); %>
         <section id="divBusca">
             <form action="/cliente/search" method="POST">
                 <input type="date" id="txtBusca" name="search" placeholder="Buscar..." />
-                <button type="submit" id="search"><img src="../../public/images/icons8-pesquisar-sf-black-16.png" id="btnBusca"
+                <button type="submit" id="search"><img src="/public/images/icons8-pesquisar-sf-black-16.png" id="btnBusca"
                         alt="Buscar" /></button>
                 </form>
         </section>
-
+<main class="agenda">
     <h1>Agendamentos</h1>
-    
-    <main class="agenda">
-<% agenda.forEach(item=> { %>
+
+    <% agenda.forEach(item=> { %>
     <section id="dados">
-        <ul id="detalhes">
-            <section id="dadosAgenda">
-                        NOME:<%= item.nome %>
-                        DATA:<%= item.data %>
-                        HORA:<%= item.hora %>
-                    </section>
-                    </ul>
-        </section>
+        <div id="detalhes">
+            <div id="dadosAgenda">
+                <div><%= item.nome %></div>
+                <div><%= item.data %></div>
+                <div><%= item.hora %></div>
+            </div>
+        </div>
+    </section>
     <% }); %>
+
 </main>
 
     <%- include('../includes/clientFooter'); %>
