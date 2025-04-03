@@ -17,10 +17,35 @@ router.get('/', async (req, res) => {
 
 router.get('/agenda', async (req, res) => {
     try { 
-        const agenda = await prisma.agenda.findMany({orderBy:[{data: 'asc'}, {hora: 'asc'}]})
+        
+        let hoje = new Date();   
+        hoje = moment(hoje).locale('pt-br').format('DD/MM/YYYY');
+        let dia = hoje.slice(0,2)
+        let mes = hoje.slice(3,5)
+        let ano = hoje.slice(6)
+
+        let agenda = await prisma.agenda.findMany({
+            orderBy:[
+                {data: 'asc'}, 
+                {hora: 'asc'}
+                ]
+            }) 
+
+            const agendaFiltrada = agenda.filter(item => {
+                let itemAno = item.data.slice(6)
+                if(itemAno == ano){
+                    let itemMes = item.data.slice(3,5)
+                    if(itemMes >= mes){
+                        let itemDia = item.data.slice(0,2)
+                        if(itemDia >= dia)
+                            return item
+                    }
+                }
+            });
+
         
         res.status(200).render('clientes/agenda', {
-            agenda: agenda,
+            agenda: agendaFiltrada,
             message:``
         })
     } catch (err) {
@@ -63,9 +88,32 @@ router.post('/agenda/add', async (req, res) => {
             },
         })
 
-        const agenda = await prisma.agenda.findMany({orderBy:[{data: 'asc'}, {hora: 'asc'}]})
+        let hoje = new Date();   
+        hoje = moment(hoje).locale('pt-br').format('DD/MM/YYYY');
+        let dia = hoje.slice(0,2)
+        let mes = hoje.slice(3,5)
+        let ano = hoje.slice(6)
 
-        res.status(200).render('clientes/agenda', {agenda: agenda, message: `Agendamento concluido!!`})
+        let agenda = await prisma.agenda.findMany({
+            orderBy:[
+                {data: 'asc'}, 
+                {hora: 'asc'}
+                ]
+            }) 
+
+            const agendaFiltrada = agenda.filter(item => {
+                let itemAno = item.data.slice(6)
+                if(itemAno == ano){
+                    let itemMes = item.data.slice(3,5)
+                    if(itemMes >= mes){
+                        let itemDia = item.data.slice(0,2)
+                        if(itemDia >= dia)
+                            return item
+                    }
+                }
+            });
+
+        res.status(200).render('clientes/agenda', {agenda: agendaFiltrada, message: `Agendamento concluido!!`})
     } catch (err) {
         console.error(`Rota /cliente/add: ${err.message}`);
       throw new Error("Erro!!!!");
@@ -85,20 +133,44 @@ router.get('/infos', async (req, res) => {
       throw new Error("Erro!!!!");
     }
 })
-
+//TODO: criar funcao externa para formatar data e filtrar agenda
 router.post('/search', async (req, res) => {
     try {
         let {search} = req.body
 
-        if(!search){
-            const agenda = await prisma.agenda.findMany({orderBy: [{data: 'asc'}, {hora: 'asc'}]})
+        let hoje = new Date();   
+        hoje = moment(hoje).locale('pt-br').format('DD/MM/YYYY');
+        let dia = hoje.slice(0,2)
+        let mes = hoje.slice(3,5)
+        let ano = hoje.slice(6)
 
-            return res.status(200).render('clientes/agenda', {agenda: agenda, message:``})
+        if(!search){
+        
+        let agenda = await prisma.agenda.findMany({
+            orderBy:[
+                {data: 'asc'}, 
+                {hora: 'asc'}
+                ]
+            }) 
+
+            const agendaFiltrada = agenda.filter(item => {
+                let itemAno = item.data.slice(6)
+                if(itemAno == ano){
+                    let itemMes = item.data.slice(3,5)
+                    if(itemMes >= mes){
+                        let itemDia = item.data.slice(0,2)
+                        if(itemDia >= dia)
+                            return item
+                    }
+                }
+            });
+
+            return res.status(200).render('clientes/agenda', {agenda: agendaFiltrada, message:``})
         }
 
-        let date = moment(search).locale('pt-br').format('DD/MM/YYYY');
+        search = moment(search).locale('pt-br').format('DD/MM/YYYY');
 
-        const agenda = await prisma.agenda.findMany({where:{data: date}, orderBy:[{data: 'asc'}, {hora: 'asc'}]})
+        const agenda = await prisma.agenda.findMany({where:{data: search}, orderBy:[{data: 'asc'}, {hora: 'asc'}]})
         
         res.status(200).render('clientes/agenda', {agenda: agenda, message: ``})
     } catch (err) {

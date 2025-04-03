@@ -9,9 +9,11 @@ body {
 }
 
 main {
-    max-width: 1200px;
+    max-width: 100%;
     margin: 40px auto;
     padding: 20px;
+    min-height: 100%;
+
 }
 
 h1 {
@@ -58,9 +60,9 @@ h1 {
     margin-bottom: 10px; 
 } */
 
-#dadosAgenda div {
+#dadosAgenda {
     margin-bottom: 5px; /* Adiciona espaço entre as linhas */
-    font-size: 14px;
+    font-size: 1rem;
     line-height: 1.4; /* Espaçamento entre as linhas */
 }
 
@@ -200,6 +202,7 @@ h1 {
 
 /* Cabeçalho */
 header {
+    max-height: 10%;
     background-color: #fff;
     padding: 15px 25px;
     display: flex;
@@ -209,7 +212,7 @@ header {
 }
 
 header #logo img {
-    height: 150px;
+    height: 100px;
     border-radius: 50%;
 }
     
@@ -616,6 +619,9 @@ body::before {
     .carousel-nav button {
         font-size: 1.5em;
     }
+    #dados{
+        width: 25%;
+    }
 }
 
 @media (max-width: 480px) {
@@ -625,5 +631,8 @@ body::before {
     .carousel-item img {
         width: 120px;
         height: 80px;
+    }
+    #dados{
+        width: 40%;
     }
 }
